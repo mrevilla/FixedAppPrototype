@@ -1,7 +1,7 @@
 package md533583cc845b761e36e0b683119bc5692;
 
 
-public class Invite
+public class EventInvite
 	extends android.app.Activity
 	implements
 		mono.android.IGCUserPeer
@@ -12,15 +12,15 @@ public class Invite
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
-		mono.android.Runtime.register ("Login.Invite, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", Invite.class, __md_methods);
+		mono.android.Runtime.register ("Login.EventInvite, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", EventInvite.class, __md_methods);
 	}
 
 
-	public Invite () throws java.lang.Throwable
+	public EventInvite () throws java.lang.Throwable
 	{
 		super ();
-		if (getClass () == Invite.class)
-			mono.android.TypeManager.Activate ("Login.Invite, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+		if (getClass () == EventInvite.class)
+			mono.android.TypeManager.Activate ("Login.EventInvite, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 

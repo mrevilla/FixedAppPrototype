@@ -1,7 +1,7 @@
 package md533583cc845b761e36e0b683119bc5692;
 
 
-public class AddFriends
+public class Invite_Uninvite
 	extends android.app.Activity
 	implements
 		mono.android.IGCUserPeer
@@ -12,15 +12,15 @@ public class AddFriends
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
-		mono.android.Runtime.register ("Login.AddFriends, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", AddFriends.class, __md_methods);
+		mono.android.Runtime.register ("Login.Invite_Uninvite, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", Invite_Uninvite.class, __md_methods);
 	}
 
 
-	public AddFriends () throws java.lang.Throwable
+	public Invite_Uninvite () throws java.lang.Throwable
 	{
 		super ();
-		if (getClass () == AddFriends.class)
-			mono.android.TypeManager.Activate ("Login.AddFriends, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+		if (getClass () == Invite_Uninvite.class)
+			mono.android.TypeManager.Activate ("Login.Invite_Uninvite, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 

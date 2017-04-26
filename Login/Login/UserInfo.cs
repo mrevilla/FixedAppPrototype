@@ -24,6 +24,7 @@ namespace Login
         private static string AccessToken;
         private static string firstName;
         private static string lastName;
+        private static string userName;
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             this.Title = "UserInfo";
@@ -49,6 +50,7 @@ namespace Login
                     dynamic jsonData = JsonConvert.DeserializeObject(response);
                     firstName = jsonData.firstName;
                     lastName = jsonData.lastName;
+                    userName = jsonData.Email;
                 
 
                     tvUserInfo.Text = "Welcome," + '\n' + firstName + ' ' + lastName;
@@ -83,8 +85,9 @@ namespace Login
 
         private void BtnEventInvite_Click(object sender, EventArgs e)
         {
-            Intent toInvite = new Intent(this, typeof(Invite));
+            Intent toInvite = new Intent(this, typeof(EventInvite));
             toInvite.PutExtra("token", AccessToken);
+            toInvite.PutExtra("userName", userName);
             StartActivity(toInvite);
         }
 
@@ -135,9 +138,9 @@ namespace Login
 
         private void BtnAddFriends_Click(object sender, EventArgs e)
         {
-            Intent activityUserInfo = new Intent(this, typeof(AddFriends));
-            activityUserInfo.PutExtra("token", AccessToken);
-            StartActivity(activityUserInfo);
+            //Intent activityUserInfo = new Intent(this, typeof(AddFriends));
+            //activityUserInfo.PutExtra("token", AccessToken);
+            //StartActivity(activityUserInfo);
         }
 
         private void BtnFriends_Click(object sender, EventArgs e)

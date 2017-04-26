@@ -14,6 +14,7 @@ namespace Login
 {
     class Event
     {
+        public string EventId;
         public string Name;
         public string EventDateTime;
         public string Details;
@@ -25,5 +26,6 @@ namespace Login
         public string PostalCode;
         public double Latitude;
         public double Longitude;
+        public string Username;
     }
 }

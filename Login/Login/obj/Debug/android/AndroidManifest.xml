@@ -13,11 +13,11 @@
   <application android:label="Login" android:name="android.app.Application" android:allowBackup="true" android:debuggable="true">
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key" />
     <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-    <activity android:label="AddFriends" android:name="md533583cc845b761e36e0b683119bc5692.AddFriends" />
     <activity android:label="CreateEvent" android:name="md533583cc845b761e36e0b683119bc5692.CreateEvent" />
+    <activity android:label="EventInvite" android:name="md533583cc845b761e36e0b683119bc5692.EventInvite" />
     <activity android:label="FriendProfile" android:name="md533583cc845b761e36e0b683119bc5692.FriendProfile" />
     <activity android:label="Friends" android:name="md533583cc845b761e36e0b683119bc5692.Friends" />
-    <activity android:label="Invite" android:name="md533583cc845b761e36e0b683119bc5692.Invite" />
+    <activity android:label="Invite_Uninvite" android:name="md533583cc845b761e36e0b683119bc5692.Invite_Uninvite" />
     <activity android:icon="@drawable/icon" android:label="Login" android:name="md533583cc845b761e36e0b683119bc5692.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN" />
