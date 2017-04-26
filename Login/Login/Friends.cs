@@ -25,6 +25,9 @@ namespace Login
         TextView tvFriendsTest;
         ListView listFriends;
         private dynamic jsonData;
+        SortedList<string, Friend> peopleSortedList = new SortedList<string, Friend>();
+        List<string> names = new List<string>();
+
         protected  async override void OnCreate(Bundle savedInstanceState)
         {
             this.Title = "Friends List";
@@ -59,8 +62,8 @@ namespace Login
 
             //loop through each friend and put their data into a sorted list by first and last name
             // then work on seperating the people into confirmed and pending
-            SortedList<string,Friend> peopleSortedList = new SortedList<string, Friend>();
-            List<string> names = new List<string>();
+            peopleSortedList.Clear();
+            names.Clear();
 
             foreach (var x in jsonData)
             {
@@ -71,22 +74,14 @@ namespace Login
                 person.userName = x.userName;
                 person.friendshipEstablished = x.friendshipEstablished;
 
-                peopleSortedList.Add(person.FirstName + person.LastName, person);
+                peopleSortedList.Add(person.FirstName + ' ' + person.LastName, person);
 
                 //popluate names and organize it. then you can call the corresponding key from the sorted list
+                names.Add(person.FirstName + ' ' + person.LastName);
             }
 
-            //  List<string> names = new List<string>();
-            ////get the names of each friend
-            //foreach (var person in jsonData)
-            //{
-            //    string name = person.FirstName + ' ' + person.LastName + '\n';
-            //    names.Add(name);
-            //}
-            
-
-
-            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, names.ToArray());
+            names.Sort();
+            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, names);
             // Bind the adapter to the ListView.
             listFriends.Adapter = adapter;
             listFriends.ItemClick += ListFriends_ItemClick;
@@ -110,15 +105,34 @@ namespace Login
                 tvFriendsTest.Text = "ERROR";
             }
 
-            List<string> names = new List<string>();
-            //get the names of each friend
-            foreach (var person in jsonData)
+            if (jsonData == null)
             {
-                string name = person.FirstName + ' ' + person.LastName + '\n';
-                names.Add(name);
+                tvFriendsTest.Text = "ERROR";
             }
 
-            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, names.ToArray());
+
+            //loop through each friend and put their data into a sorted list by first and last name
+            // then work on seperating the people into confirmed and pending
+            peopleSortedList.Clear();
+            names.Clear();
+
+            foreach (var x in jsonData)
+            {
+                Friend person = new Friend();
+                person.FirstName = x.FirstName;
+                person.LastName = x.LastName;
+                person.PhoneNumber = x.PhoneNumber;
+                person.userName = x.userName;
+                person.friendshipEstablished = x.friendshipEstablished;
+
+                peopleSortedList.Add(person.FirstName + ' ' + person.LastName, person);
+
+                //popluate names and organize it. then you can call the corresponding key from the sorted list
+                names.Add(person.FirstName + ' ' + person.LastName);
+            }
+
+            names.Sort();
+            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, names);
             // Bind the adapter to the ListView.
             listFriends.Adapter = adapter;
         }
@@ -126,7 +140,7 @@ namespace Login
         private void ListFriends_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             Intent toFriendProfile = new Intent(this, typeof(FriendProfile));
-            var selectedFriend = jsonData[e.Position];
+            var selectedFriend = peopleSortedList[names[e.Position]];
             string serializedFriend = JsonConvert.SerializeObject(selectedFriend);
             toFriendProfile.PutExtra("friend", serializedFriend);
             toFriendProfile.PutExtra("token", AccessToken);
