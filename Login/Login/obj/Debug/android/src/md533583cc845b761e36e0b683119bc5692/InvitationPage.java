@@ -1,7 +1,7 @@
 package md533583cc845b761e36e0b683119bc5692;
 
 
-public class InvitedFriends
+public class InvitationPage
 	extends android.app.Activity
 	implements
 		mono.android.IGCUserPeer
@@ -12,15 +12,15 @@ public class InvitedFriends
 		__md_methods = 
 			"n_onCreate:(Landroid/os/Bundle;)V:GetOnCreate_Landroid_os_Bundle_Handler\n" +
 			"";
-		mono.android.Runtime.register ("Login.InvitedFriends, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", InvitedFriends.class, __md_methods);
+		mono.android.Runtime.register ("Login.InvitationPage, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", InvitationPage.class, __md_methods);
 	}
 
 
-	public InvitedFriends () throws java.lang.Throwable
+	public InvitationPage () throws java.lang.Throwable
 	{
 		super ();
-		if (getClass () == InvitedFriends.class)
-			mono.android.TypeManager.Activate ("Login.InvitedFriends, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+		if (getClass () == InvitationPage.class)
+			mono.android.TypeManager.Activate ("Login.InvitationPage, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 

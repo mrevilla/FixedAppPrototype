@@ -14,7 +14,6 @@ namespace Login
 {
     class Event
     {
-        public string EventId;
         public string Name;
         public string EventDateTime;
         public string Details;

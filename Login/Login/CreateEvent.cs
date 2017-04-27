@@ -22,7 +22,7 @@ namespace Login
         private static string AccessToken;
         private EditText etCEEventName;
         private EditText etCEDetails;
-        private Event evt;
+        private static Event evt;
         private TextView tvCEError;
         private TextView tvCETime;
         private TextView tvCEDate;
@@ -34,7 +34,7 @@ namespace Login
         private int hours;
         private int minutes;
         private TextView tvCEAddress;
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
@@ -47,11 +47,11 @@ namespace Login
             AccessToken = Intent.GetStringExtra("token");
 
             etCEEventName = (EditText)FindViewById(Resource.Id.etCEEventName);
-            etCEDetails = (EditText) FindViewById(Resource.Id.etCEDetails);
+            etCEDetails = (EditText)FindViewById(Resource.Id.etCEDetails);
             tvCEError = (TextView)FindViewById(Resource.Id.tvCEError);
             tvCETime = (TextView)FindViewById(Resource.Id.tvCETime);
             tvCEDate = (TextView)FindViewById(Resource.Id.tvCEDate);
-            tvCEAddress = (TextView) FindViewById(Resource.Id.tvCEAddress);
+            tvCEAddress = (TextView)FindViewById(Resource.Id.tvCEAddress);
 
             Button btnCEDate = (Button)FindViewById(Resource.Id.btnCEDate);
             btnCEDate.Click += BtnCEDate_Click;
@@ -80,7 +80,7 @@ namespace Login
         {
             evt.Name = etCEEventName.Text;
             evt.Details = etCEDetails.Text;
-            
+
             string formattedString = tvCEDate.Text + tvCETime.Text;
             evt.EventDateTime = formattedString;
 
@@ -97,7 +97,7 @@ namespace Login
                     Toast.MakeText(this, "Event Created", ToastLength.Short).Show();
                 }
                 Finish();
-                
+
             }
             catch (Exception exception)
             {
@@ -128,8 +128,8 @@ namespace Login
                 evt.Latitude = data.GetDoubleExtra("lat", -1);
                 evt.Longitude = data.GetDoubleExtra("lng", -1);
 
-                tvCEAddress.Text = "Address:" + '\n' 
-                    + evt.Address1 + '\n' 
+                tvCEAddress.Text = "Address:" + '\n'
+                    + evt.Address1 + '\n'
                     + evt.Address2 + '\n'
                     + evt.City + ", " + evt.State + evt.PostalCode + '\n'
                     + evt.Latitude.ToString() + ", " + evt.Longitude.ToString();
@@ -147,9 +147,9 @@ namespace Login
                     break;
 
                 case TIME_DIALOG:
-                {
-                    return new TimePickerDialog(this, this, hours, minutes, false);
-                }
+                    {
+                        return new TimePickerDialog(this, this, hours, minutes, false);
+                    }
                     break;
 
                 default:

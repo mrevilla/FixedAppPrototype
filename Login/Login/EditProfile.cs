@@ -76,7 +76,7 @@ namespace Login.Resources.layout
 
                 Finish();
             }
-            catch (Exception exception)
+            catch 
             {
                 tvEditError.Text = "ERROR";
             }

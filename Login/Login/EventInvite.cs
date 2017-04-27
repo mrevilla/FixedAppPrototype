@@ -24,7 +24,7 @@ namespace Login
         private static string userName;
         private TextView tvEventInviteError;
         private ListView listInviteEvents;
-        SortedList<string, Event> myEvents = new SortedList<string, Event>();
+        SortedList<string, string>ids = new SortedList<string, string>();
         List<string> names = new List<string>();
         protected async override void OnCreate(Bundle savedInstanceState)
         {
@@ -62,44 +62,28 @@ namespace Login
                 {
                     foreach (var x in jsonData)
                     {
+
                         //filter out the events not owned by the user
                         if (x.Username == userName)
                         {
-                            //capture event details in an event
-                            Event myEvent = new Event();
-                            myEvent.EventId = x.EventId;
-                            myEvent.Name = x.Name;
-                            myEvent.EventDateTime = x.EventDateTime;
-                            myEvent.Details = x.Details;
-                            myEvent.Address1 = x.Address1;
-                            myEvent.Address2 = x.Address2;
-                            myEvent.City = x.City;
-                            myEvent.State = x.State;
-                            myEvent.Country = x.Country;
-                            myEvent.PostalCode = x.PostalCode;
-                            myEvent.Latitude = x.Latitude;
-                            myEvent.Longitude = x.Longitude;
-                            myEvent.Username = x.Username;
-
-                            //add the event to the sorted list
-                            myEvents.Add(myEvent.Name, myEvent);
-                            //create a list of names for user
-                            names.Add(myEvent.Name);
+                            //get ids and names of events that match
+                            names.Add(x.Name.ToString());
+                            ids.Add(x.Name.ToString(), x.EventId.ToString());
                         }
                     }
 
                     //alphabetize names
                     names.Sort();
 
-                    ////route to activity when clicked on
+                    //route to activity when clicked on
                     ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, names);
                     listInviteEvents.Adapter = adapter;
 
-                    //if event is clicked 
+                    //if event is clicked
                     listInviteEvents.ItemClick += ListInviteEvents_ItemClick;
                 }
             }
-            catch (Exception e)
+            catch
             {
                 tvEventInviteError.Text = "ERROR";
             }
@@ -110,8 +94,7 @@ namespace Login
             //move the selected event to the next activity
             Intent toInvitedFriends = new Intent(this, typeof(Invite_Uninvite));
             //serialize event
-            string serializedEvent = JsonConvert.SerializeObject(myEvents[names[e.Position]]);
-            toInvitedFriends.PutExtra("event", serializedEvent);
+            toInvitedFriends.PutExtra("eventId", ids[names[e.Position]]);
             toInvitedFriends.PutExtra("token", AccessToken);
             StartActivity(toInvitedFriends);
         }

@@ -14,6 +14,10 @@ Login.Friends, Login;md533583cc845b761e36e0b683119bc5692.Friends
 Login.Friends, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.Friends
 Login.Friends;md533583cc845b761e36e0b683119bc5692.Friends
 login.Friends;md533583cc845b761e36e0b683119bc5692.Friends
+Login.InvitationPage, Login;md533583cc845b761e36e0b683119bc5692.InvitationPage
+Login.InvitationPage, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.InvitationPage
+Login.InvitationPage;md533583cc845b761e36e0b683119bc5692.InvitationPage
+login.InvitationPage;md533583cc845b761e36e0b683119bc5692.InvitationPage
 Login.Invite_Uninvite, Login;md533583cc845b761e36e0b683119bc5692.Invite_Uninvite
 Login.Invite_Uninvite, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.Invite_Uninvite
 Login.Invite_Uninvite;md533583cc845b761e36e0b683119bc5692.Invite_Uninvite
@@ -30,6 +34,10 @@ Login.SelectLocation, Login;md533583cc845b761e36e0b683119bc5692.SelectLocation
 Login.SelectLocation, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.SelectLocation
 Login.SelectLocation;md533583cc845b761e36e0b683119bc5692.SelectLocation
 login.SelectLocation;md533583cc845b761e36e0b683119bc5692.SelectLocation
+Login.UninvitePage, Login;md533583cc845b761e36e0b683119bc5692.UninvitePage
+Login.UninvitePage, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.UninvitePage
+Login.UninvitePage;md533583cc845b761e36e0b683119bc5692.UninvitePage
+login.UninvitePage;md533583cc845b761e36e0b683119bc5692.UninvitePage
 Login.UserInfo, Login;md533583cc845b761e36e0b683119bc5692.UserInfo
 Login.UserInfo, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.UserInfo
 Login.UserInfo;md533583cc845b761e36e0b683119bc5692.UserInfo

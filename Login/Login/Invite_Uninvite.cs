@@ -22,14 +22,21 @@ namespace Login
             // Create your application here
             SetContentView(Resource.Layout.Invite_Uninvite);
 
-            Button btnInvite = (Button) FindViewById(Resource.Id.btnInvite);
+            Button btnInvite = (Button)FindViewById(Resource.Id.btnInvite);
+            TextView tvIUError = (TextView) FindViewById(Resource.Id.tvIUError);
 
             btnInvite.Click += delegate
             {
-                
+                Intent toInvitationPage = new Intent(this,typeof(InvitationPage));
+                string accessToken = Intent.GetStringExtra("token");
+                string eventId = Intent.GetStringExtra("eventId");
+                toInvitationPage.PutExtra("token", accessToken);
+                toInvitationPage.PutExtra("eventId", eventId);
+                StartActivity(toInvitationPage);
+
             };
 
-            Button btnUninvite = (Button) FindViewById(Resource.Id.btnUninvite);
+            Button btnUninvite = (Button)FindViewById(Resource.Id.btnUninvite);
             btnUninvite.Click += delegate
             {
 
