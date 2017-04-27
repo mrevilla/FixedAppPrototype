@@ -8,4 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tvInvitationPageError" />
+    <Button
+        android:text="Send Invites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSendInvites" />
+    <ListView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lvInvitationPage" />
 </LinearLayout>

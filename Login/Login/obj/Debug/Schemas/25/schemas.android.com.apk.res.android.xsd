@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>4/26/2017 4:49:00 PM</xs:documentation>
+    <xs:documentation>4/27/2017 9:32:17 AM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -18419,6 +18419,7 @@
             <xs:enumeration value="@id/btnRegister" />
             <xs:enumeration value="@id/btnSaveLocation" />
             <xs:enumeration value="@id/btnSelectLocation" />
+            <xs:enumeration value="@id/btnSendInvites" />
             <xs:enumeration value="@id/btnSMS" />
             <xs:enumeration value="@id/btnUninvite" />
             <xs:enumeration value="@id/etAddress1" />
@@ -18439,6 +18440,7 @@
             <xs:enumeration value="@id/etState" />
             <xs:enumeration value="@id/linearCreateEvent" />
             <xs:enumeration value="@id/listViewFriends" />
+            <xs:enumeration value="@id/lvInvitationPage" />
             <xs:enumeration value="@id/lvInviteEvents" />
             <xs:enumeration value="@id/slMap" />
             <xs:enumeration value="@id/svCreateEvent" />

@@ -74,10 +74,10 @@ namespace Login
                 person.userName = x.userName;
                 person.friendshipEstablished = x.friendshipEstablished;
 
-                peopleSortedList.Add(person.FirstName + ' ' + person.LastName, person);
+                peopleSortedList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
 
                 //popluate names and organize it. then you can call the corresponding key from the sorted list
-                names.Add(person.FirstName + ' ' + person.LastName);
+                names.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName);
             }
 
             names.Sort();
@@ -125,10 +125,10 @@ namespace Login
                 person.userName = x.userName;
                 person.friendshipEstablished = x.friendshipEstablished;
 
-                peopleSortedList.Add(person.FirstName + ' ' + person.LastName, person);
+                peopleSortedList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
 
                 //popluate names and organize it. then you can call the corresponding key from the sorted list
-                names.Add(person.FirstName + ' ' + person.LastName);
+                names.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName);
             }
 
             names.Sort();
