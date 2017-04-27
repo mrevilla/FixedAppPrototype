@@ -104,7 +104,7 @@ namespace Login
 
         }
 
-        private void BtnSendInvites_Click(object sender, EventArgs e)
+        private async void BtnSendInvites_Click(object sender, EventArgs e)
         {
             var sparseArray = FindViewById<ListView>(Resource.Id.lvInvitationPage).CheckedItemPositions;
             for (var i = 0; i < sparseArray.Size(); i++)
@@ -115,10 +115,35 @@ namespace Login
                 {
                     //get that persons information
                     Friend receiver = friendsList[validInvite[i]];
-                    //tvInvitationPageError.Text = receiver.newFriendId;
+                    //create the invitation
+                    Attendee invitation = new Attendee();
+                    invitation.AttendeeId = receiver.newFriendId;
+                    invitation.EventId = eventId;
+
+                    //serialize the inviation
+                    string serializedInvitation = JsonConvert.SerializeObject(invitation);
+                    
+                    //generate correct url
+                    string url = GetString(Resource.String.IP) + "api/Attendances";
                     //send invite to the person
+                    try
+                    {
+                        string response = await MakePostRequest(url, serializedInvitation, true);
+                    }
+                    catch
+                    {
+                        tvInvitationPageError.Text = "ERROR";
+                    }
+                   
+                }
+
+                if (tvInvitationPageError.Text != "ERROR")
+                {
+                    Toast.MakeText(this, "Invitations Sent", ToastLength.Short).Show();
+                    Finish();
                 }
             }
+
             
         }
 
@@ -139,6 +164,34 @@ namespace Login
                 string strContent = sr.ReadToEnd();
                 respStream = null;
                 return strContent;
+            }
+        }
+
+        public async Task<string> MakePostRequest(string url, string serializedDataString, bool isJson)
+        {
+            //simple request function 
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            if (isJson)
+                request.ContentType = "application/json";
+            else
+                request.ContentType = "application/x-www-form-urlencoded";
+
+            request.Method = "POST";
+            request.Headers.Add("Authorization", "Bearer " + AccessToken);
+            var stream = await request.GetRequestStreamAsync();
+            using (var writer = new StreamWriter(stream))
+            {
+                writer.Write(serializedDataString);
+                writer.Flush();
+                writer.Dispose();
+            }
+
+            var response = await request.GetResponseAsync();
+            var respStream = response.GetResponseStream();
+
+            using (StreamReader sr = new StreamReader(respStream))
+            {
+                return sr.ReadToEnd();
             }
         }
 
