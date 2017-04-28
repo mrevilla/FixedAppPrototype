@@ -28,6 +28,7 @@ namespace Login
         private static string serializedResponse;
         SortedList<string, Friend> peopleSortedList = new SortedList<string, Friend>();
         List<string> names = new List<string>();
+        
 
         protected  async override void OnCreate(Bundle savedInstanceState)
         {
@@ -68,20 +69,27 @@ namespace Login
 
             foreach (var x in jsonData)
             {
-                Friend person = new Friend();
-                person.FirstName = x.FirstName;
-                person.LastName = x.LastName;
-                person.PhoneNumber = x.PhoneNumber;
-                person.userName = x.userName;
-                person.friendshipEstablished = x.friendshipEstablished;
+                if (x.friendshipEstablished == true.ToString())
+                {
+                    Friend person = new Friend();
+                    person.FirstName = x.FirstName;
+                    person.LastName = x.LastName;
+                    person.PhoneNumber = x.PhoneNumber;
+                    person.userName = x.userName;
+                    person.friendshipEstablished = x.friendshipEstablished;
 
-                peopleSortedList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
+                    peopleSortedList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
 
-                //popluate names and organize it. then you can call the corresponding key from the sorted list
-                names.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName);
+                    //popluate names and organize it. then you can call the corresponding key from the sorted list
+                    names.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName);
+                }
+
+
+
             }
 
             names.Sort();
+       
             ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, names);
             // Bind the adapter to the ListView.
             listFriends.Adapter = adapter;
@@ -89,6 +97,9 @@ namespace Login
 
             Button btnAddFriends = (Button) FindViewById(Resource.Id.btnAddFriends);
             btnAddFriends.Click += BtnAddFriends_Click;
+
+            Button btnPending = (Button)FindViewById(Resource.Id.btnPending);
+            btnPending.Click += BtnPending_Click;
         }
 
         private void BtnAddFriends_Click(object sender, EventArgs e)
@@ -108,7 +119,7 @@ namespace Login
             try
             {
 
-                string serializedResponse = await MakeGetRequest(url);
+                serializedResponse = await MakeGetRequest(url);
                 jsonData = JsonConvert.DeserializeObject(serializedResponse);
             }
             catch (Exception e)
@@ -127,25 +138,38 @@ namespace Login
             peopleSortedList.Clear();
             names.Clear();
 
+            //populate all established friends
             foreach (var x in jsonData)
             {
-                Friend person = new Friend();
-                person.FirstName = x.FirstName;
-                person.LastName = x.LastName;
-                person.PhoneNumber = x.PhoneNumber;
-                person.userName = x.userName;
-                person.friendshipEstablished = x.friendshipEstablished;
+                if (x.friendshipEstablished == true.ToString())
+                {
+                    Friend person = new Friend();
+                    person.FirstName = x.FirstName;
+                    person.LastName = x.LastName;
+                    person.PhoneNumber = x.PhoneNumber;
+                    person.userName = x.userName;
+                    person.friendshipEstablished = x.friendshipEstablished;
 
-                peopleSortedList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
+                    peopleSortedList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
 
-                //popluate names and organize it. then you can call the corresponding key from the sorted list
-                names.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName);
+                    //popluate names and organize it. then you can call the corresponding key from the sorted list
+                    names.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName);
+                }
+
             }
 
             names.Sort();
             ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, names);
             // Bind the adapter to the ListView.
             listFriends.Adapter = adapter;
+        }
+
+        private void BtnPending_Click(object sender, EventArgs e)
+        {
+            Intent toPendingFriends = new Intent(this,typeof(PendingFriends));
+            toPendingFriends.PutExtra("response", serializedResponse);
+            toPendingFriends.PutExtra("token", AccessToken); 
+            StartActivity(toPendingFriends);
         }
 
         private void ListFriends_ItemClick(object sender, AdapterView.ItemClickEventArgs e)

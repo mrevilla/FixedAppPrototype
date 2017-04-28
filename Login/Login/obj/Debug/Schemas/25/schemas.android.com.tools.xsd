@@ -2,7 +2,7 @@
 <xs:schema xmlns:tools="http://schemas.android.com/tools" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/tools" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>4/27/2017 10:42:31 PM</xs:documentation>
+    <xs:documentation>4/28/2017 8:55:37 AM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="layout">
     <xs:annotation>
@@ -21,6 +21,8 @@
             <xs:enumeration value="@layout/invitationpage" />
             <xs:enumeration value="@layout/invite_uninvite" />
             <xs:enumeration value="@layout/main" />
+            <xs:enumeration value="@layout/pendingfriends" />
+            <xs:enumeration value="@layout/pendingprofile" />
             <xs:enumeration value="@layout/register" />
             <xs:enumeration value="@layout/selectlocation" />
             <xs:enumeration value="@layout/uninvitepage" />
@@ -82,6 +84,8 @@
             <xs:enumeration value="@layout/invitationpage" />
             <xs:enumeration value="@layout/invite_uninvite" />
             <xs:enumeration value="@layout/main" />
+            <xs:enumeration value="@layout/pendingfriends" />
+            <xs:enumeration value="@layout/pendingprofile" />
             <xs:enumeration value="@layout/register" />
             <xs:enumeration value="@layout/selectlocation" />
             <xs:enumeration value="@layout/uninvitepage" />
@@ -143,6 +147,8 @@
             <xs:enumeration value="@layout/invitationpage" />
             <xs:enumeration value="@layout/invite_uninvite" />
             <xs:enumeration value="@layout/main" />
+            <xs:enumeration value="@layout/pendingfriends" />
+            <xs:enumeration value="@layout/pendingprofile" />
             <xs:enumeration value="@layout/register" />
             <xs:enumeration value="@layout/selectlocation" />
             <xs:enumeration value="@layout/uninvitepage" />
@@ -204,6 +210,8 @@
             <xs:enumeration value="@layout/invitationpage" />
             <xs:enumeration value="@layout/invite_uninvite" />
             <xs:enumeration value="@layout/main" />
+            <xs:enumeration value="@layout/pendingfriends" />
+            <xs:enumeration value="@layout/pendingprofile" />
             <xs:enumeration value="@layout/register" />
             <xs:enumeration value="@layout/selectlocation" />
             <xs:enumeration value="@layout/uninvitepage" />

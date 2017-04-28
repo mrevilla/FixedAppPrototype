@@ -124,6 +124,8 @@
     <Compile Include="InvitationPage.cs" />
     <Compile Include="Invite_Uninvite.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PendingFriends.cs" />
+    <Compile Include="PendingProfile.cs" />
     <Compile Include="Register.cs" />
     <Compile Include="EditProfile.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -171,6 +173,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\AddFriends.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\PendingFriends.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\PendingProfile.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
