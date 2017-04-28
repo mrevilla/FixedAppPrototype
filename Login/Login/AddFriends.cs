@@ -97,27 +97,30 @@ namespace Login
             {
                 if (sparseArray.ValueAt(i) == true)
                 {
-                    Friend selectedPerson = allUsers[allUsers.Keys[i]];
+                   
+                    Friend selectedPerson = allUsers[allUsers.Keys[sparseArray.KeyAt(i)]];
 
                     string id = JsonConvert.SerializeObject(selectedPerson.newFriendId);
                     string payload = "{" + "newFriendId :" + id + "}";
 
+
                     try
                     {
-                        string reply = await MakePostRequest(url, payload , true);
-       
+                        string reply = await MakePostRequest(url, payload, true);
+
                     }
                     catch
                     {
                         tvAddFriendsError.Text = "ERROR ADDING FRIENDS";
                     }
                 }
-            }
+            
 
-            if (tvAddFriendsError.Text != "ERROR ADDING FRIENDS")
-            {
-                Toast.MakeText(this, "Friend Requests Sent", ToastLength.Short).Show();
-                Finish();
+                if (tvAddFriendsError.Text != "ERROR ADDING FRIENDS")
+                {
+                    Toast.MakeText(this, "Friend Requests Sent", ToastLength.Short).Show();
+                    Finish();
+                }
             }
         }
 

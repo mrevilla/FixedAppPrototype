@@ -77,6 +77,7 @@ namespace Login
                     person.PhoneNumber = x.PhoneNumber;
                     person.userName = x.userName;
                     person.friendshipEstablished = x.friendshipEstablished;
+                    person.newFriendId = x.newFriendId;
 
                     peopleSortedList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
 
@@ -122,7 +123,7 @@ namespace Login
                 serializedResponse = await MakeGetRequest(url);
                 jsonData = JsonConvert.DeserializeObject(serializedResponse);
             }
-            catch (Exception e)
+            catch
             {
                 tvFriendsTest.Text = "ERROR";
             }
@@ -149,6 +150,7 @@ namespace Login
                     person.PhoneNumber = x.PhoneNumber;
                     person.userName = x.userName;
                     person.friendshipEstablished = x.friendshipEstablished;
+                    person.newFriendId = x.newFriendId;
 
                     peopleSortedList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
 
@@ -167,8 +169,8 @@ namespace Login
         private void BtnPending_Click(object sender, EventArgs e)
         {
             Intent toPendingFriends = new Intent(this,typeof(PendingFriends));
-            toPendingFriends.PutExtra("response", serializedResponse);
-            toPendingFriends.PutExtra("token", AccessToken); 
+            toPendingFriends.PutExtra("token", AccessToken);
+            toPendingFriends.PutExtra("response", serializedResponse); 
             StartActivity(toPendingFriends);
         }
 

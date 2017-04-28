@@ -115,7 +115,7 @@ namespace Login
                 if (sparseArray.ValueAt(i) == true)
                 {
                     //get that persons information
-                    Friend receiver = friendsList[validInvite[i]];
+                    Friend receiver = friendsList[validInvite[sparseArray.KeyAt(i)]];
                     //create the invitation
                     Attendee invitation = new Attendee();
                     invitation.AttendeeId = receiver.newFriendId;

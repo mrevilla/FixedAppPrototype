@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -42,6 +44,7 @@ namespace Login
                 if (x.friendshipEstablished == false.ToString())
                 {
                     Friend person = new Friend();
+                    person.newFriendId = x.newFriendId;
                     person.FirstName = x.FirstName;
                     person.LastName = x.LastName;
                     person.PhoneNumber = x.PhoneNumber;
@@ -68,6 +71,73 @@ namespace Login
             toFriendProfile.PutExtra("token", AccessToken);
             StartActivity(toFriendProfile);
 
+        }
+
+        protected async override void OnResume()
+        {
+            base.OnResume();
+            string serializedResponse;
+            dynamic jsonData;
+            string url = GetString(Resource.String.IP) + "api/friends";
+            pendingFriends.Clear();
+            try
+            {
+
+                serializedResponse = await MakeGetRequest(url);
+                jsonData = JsonConvert.DeserializeObject(serializedResponse);
+
+                if (jsonData == null)
+                {
+                    tvPendingError.Text = "ERROR";
+                }
+
+                foreach (var x in jsonData)
+                {
+                    if (x.friendshipEstablished == false.ToString())
+                    {
+                        Friend person = new Friend();
+                        person.newFriendId = x.newFriendId;
+                        person.FirstName = x.FirstName;
+                        person.LastName = x.LastName;
+                        person.PhoneNumber = x.PhoneNumber;
+                        person.userName = x.userName;
+                        person.friendshipEstablished = x.friendshipEstablished;
+
+                        pendingFriends.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
+                    }
+
+                }
+            }
+            catch
+            {
+                tvPendingError.Text = "ERROR";
+            }
+
+           
+
+            ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1, pendingFriends.Keys.ToArray());
+            // Bind the adapter to the ListView.
+            lvPending.Adapter = adapter;
+        }
+
+        public static async Task<string> MakeGetRequest(string url)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.ContentType = "application/json; charset=utf-8";
+            request.Method = "GET";
+            request.Headers.Add("Authorization", "Bearer " + AccessToken);
+
+            var response = await request.GetResponseAsync();
+            var respStream = response.GetResponseStream();
+            respStream.Flush();
+
+            using (StreamReader sr = new StreamReader(respStream))
+            {
+                //Need to return this response 
+                string strContent = sr.ReadToEnd();
+                respStream = null;
+                return strContent;
+            }
         }
     }
 }

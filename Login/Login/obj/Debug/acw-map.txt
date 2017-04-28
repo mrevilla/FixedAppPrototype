@@ -34,6 +34,10 @@ Login.PendingFriends, Login;md533583cc845b761e36e0b683119bc5692.PendingFriends
 Login.PendingFriends, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.PendingFriends
 Login.PendingFriends;md533583cc845b761e36e0b683119bc5692.PendingFriends
 login.PendingFriends;md533583cc845b761e36e0b683119bc5692.PendingFriends
+Login.PendingProfile, Login;md533583cc845b761e36e0b683119bc5692.PendingProfile
+Login.PendingProfile, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.PendingProfile
+Login.PendingProfile;md533583cc845b761e36e0b683119bc5692.PendingProfile
+login.PendingProfile;md533583cc845b761e36e0b683119bc5692.PendingProfile
 Login.Register, Login;md533583cc845b761e36e0b683119bc5692.Register
 Login.Register, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.Register
 Login.Register;md533583cc845b761e36e0b683119bc5692.Register

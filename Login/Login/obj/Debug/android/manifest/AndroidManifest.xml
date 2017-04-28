@@ -27,6 +27,7 @@
       </intent-filter>
     </activity>
     <activity android:label="PendingFriends" android:name="md533583cc845b761e36e0b683119bc5692.PendingFriends" />
+    <activity android:label="PendingProfile" android:name="md533583cc845b761e36e0b683119bc5692.PendingProfile" />
     <activity android:label="Register" android:name="md533583cc845b761e36e0b683119bc5692.Register" />
     <activity android:label="SelectLocation" android:name="md533583cc845b761e36e0b683119bc5692.SelectLocation" />
     <activity android:label="UninvitePage" android:name="md533583cc845b761e36e0b683119bc5692.UninvitePage" />

@@ -212,5 +212,6 @@ D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.Xml.dll.
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\addfriends.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\pendingfriends.xml
+D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\pendingprofile.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\Login.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\bin\Debug\Login.dll.mdb

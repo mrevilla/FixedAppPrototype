@@ -42,6 +42,7 @@ namespace Login
 
             // Get the serialization
             string serializedFriend = Intent.GetStringExtra("friend");
+
             friend = JsonConvert.DeserializeObject(serializedFriend);
 
             AccessToken = Intent.GetStringExtra("token");
@@ -50,6 +51,8 @@ namespace Login
             tvFPName.Text = friend.FirstName + ' ' + friend.LastName;
             tvFPEmail.Text = friend.userName;
             tvFPPhone.Text = friend.PhoneNumber;
+
+            tvFPError.Text = friend.newFriendId;
 
             if (friend.PhoneNumber != null)
             {
@@ -72,7 +75,7 @@ namespace Login
 
         private async void BtnFPRemove_Click(object sender, EventArgs e)
         {
-            /*Working on getting the delete request to work*/
+           
 
             try
             {
