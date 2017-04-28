@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px">
+    <Button
+        android:text="Add Friends"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnAddFriends" />
     <TextView
         android:text=""
         android:layout_width="match_parent"

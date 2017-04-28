@@ -37,6 +37,7 @@ namespace Login
             lvInvitationPage.FastScrollEnabled = true;
             lvInvitationPage.ChoiceMode = Android.Widget.ChoiceMode.Multiple;
 
+            //get intent data
             AccessToken = Intent.GetStringExtra("token");
             eventId = Intent.GetStringExtra("eventId");
 

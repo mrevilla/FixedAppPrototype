@@ -39,7 +39,12 @@ namespace Login
             Button btnUninvite = (Button)FindViewById(Resource.Id.btnUninvite);
             btnUninvite.Click += delegate
             {
-
+                Intent toUninvitePage = new Intent(this, typeof(UninvitePage));
+                string accessToken = Intent.GetStringExtra("token");
+                string eventId = Intent.GetStringExtra("eventId");
+                toUninvitePage.PutExtra("token", accessToken);
+                toUninvitePage.PutExtra("eventId", eventId);
+                StartActivity(toUninvitePage);
             };
         }
     }

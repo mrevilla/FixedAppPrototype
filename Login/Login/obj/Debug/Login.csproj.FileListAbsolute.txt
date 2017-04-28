@@ -178,6 +178,7 @@ D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\drawable\icon.png
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\R.cs.flag
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\uploadflags.txt
 D:\Github\FixedAppPrototype\Login\Login\bin\Debug\Login.dll.mdb
+D:\Github\FixedAppPrototype\Login\Login\obj\Debug\Login.csprojResolveAssemblyReference.cache
 D:\Github\FixedAppPrototype\Login\Login\bin\Debug\Java.Interop.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\bin\Debug\Microsoft.CSharp.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\bin\Debug\Mono.Android.dll.mdb
@@ -209,6 +210,5 @@ D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.Runtime.
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.Xml.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
-D:\Github\FixedAppPrototype\Login\Login\obj\Debug\Login.csprojResolveAssemblyReference.cache
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\Login.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\bin\Debug\Login.dll.mdb

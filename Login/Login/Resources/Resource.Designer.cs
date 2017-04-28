@@ -262,8 +262,11 @@ namespace Login
 			// aapt resource value: 0x7f07000a
 			public const int auto = 2131165194;
 			
-			// aapt resource value: 0x7f070049
-			public const int btnAddress = 2131165257;
+			// aapt resource value: 0x7f07002e
+			public const int btnAddFriends = 2131165230;
+			
+			// aapt resource value: 0x7f07004a
+			public const int btnAddress = 2131165258;
 			
 			// aapt resource value: 0x7f07001a
 			public const int btnCECreateEvent = 2131165210;
@@ -274,17 +277,17 @@ namespace Login
 			// aapt resource value: 0x7f070016
 			public const int btnCETime = 2131165206;
 			
-			// aapt resource value: 0x7f07004f
-			public const int btnCreateEvent = 2131165263;
+			// aapt resource value: 0x7f070053
+			public const int btnCreateEvent = 2131165267;
 			
-			// aapt resource value: 0x7f07004c
-			public const int btnEditProfile = 2131165260;
+			// aapt resource value: 0x7f070050
+			public const int btnEditProfile = 2131165264;
 			
 			// aapt resource value: 0x7f070023
 			public const int btnEditSaveChanges = 2131165219;
 			
-			// aapt resource value: 0x7f070050
-			public const int btnEventInvite = 2131165264;
+			// aapt resource value: 0x7f070054
+			public const int btnEventInvite = 2131165268;
 			
 			// aapt resource value: 0x7f07002b
 			public const int btnFPEmail = 2131165227;
@@ -292,47 +295,50 @@ namespace Login
 			// aapt resource value: 0x7f07002c
 			public const int btnFPRemove = 2131165228;
 			
-			// aapt resource value: 0x7f07004d
-			public const int btnFriends = 2131165261;
-			
-			// aapt resource value: 0x7f070033
-			public const int btnInvite = 2131165235;
-			
-			// aapt resource value: 0x7f07003a
-			public const int btnLogin = 2131165242;
-			
 			// aapt resource value: 0x7f070051
-			public const int btnLogout = 2131165265;
+			public const int btnFriends = 2131165265;
 			
-			// aapt resource value: 0x7f07004e
-			public const int btnMap = 2131165262;
+			// aapt resource value: 0x7f070034
+			public const int btnInvite = 2131165236;
 			
 			// aapt resource value: 0x7f07003b
-			public const int btnRegister = 2131165243;
+			public const int btnLogin = 2131165243;
+			
+			// aapt resource value: 0x7f070055
+			public const int btnLogout = 2131165269;
+			
+			// aapt resource value: 0x7f070052
+			public const int btnMap = 2131165266;
+			
+			// aapt resource value: 0x7f07003c
+			public const int btnRegister = 2131165244;
+			
+			// aapt resource value: 0x7f07004d
+			public const int btnRevoke = 2131165261;
 			
 			// aapt resource value: 0x7f07002a
 			public const int btnSMS = 2131165226;
 			
-			// aapt resource value: 0x7f07004a
-			public const int btnSaveLocation = 2131165258;
+			// aapt resource value: 0x7f07004b
+			public const int btnSaveLocation = 2131165259;
 			
 			// aapt resource value: 0x7f070017
 			public const int btnSelectLocation = 2131165207;
 			
-			// aapt resource value: 0x7f070031
-			public const int btnSendInvites = 2131165233;
+			// aapt resource value: 0x7f070032
+			public const int btnSendInvites = 2131165234;
 			
-			// aapt resource value: 0x7f070034
-			public const int btnUninvite = 2131165236;
+			// aapt resource value: 0x7f070035
+			public const int btnUninvite = 2131165237;
 			
 			// aapt resource value: 0x7f07000b
 			public const int dark = 2131165195;
 			
-			// aapt resource value: 0x7f070044
-			public const int etAddress1 = 2131165252;
-			
 			// aapt resource value: 0x7f070045
-			public const int etAddress2 = 2131165253;
+			public const int etAddress1 = 2131165253;
+			
+			// aapt resource value: 0x7f070046
+			public const int etAddress2 = 2131165254;
 			
 			// aapt resource value: 0x7f070012
 			public const int etCEDetails = 2131165202;
@@ -340,11 +346,11 @@ namespace Login
 			// aapt resource value: 0x7f070010
 			public const int etCEEventName = 2131165200;
 			
-			// aapt resource value: 0x7f070046
-			public const int etCity = 2131165254;
+			// aapt resource value: 0x7f070047
+			public const int etCity = 2131165255;
 			
-			// aapt resource value: 0x7f070042
-			public const int etConfirmPassword = 2131165250;
+			// aapt resource value: 0x7f070043
+			public const int etConfirmPassword = 2131165251;
 			
 			// aapt resource value: 0x7f070020
 			public const int etEditEmail = 2131165216;
@@ -358,23 +364,23 @@ namespace Login
 			// aapt resource value: 0x7f070022
 			public const int etEditPhoneNumber = 2131165218;
 			
-			// aapt resource value: 0x7f070037
-			public const int etEmail = 2131165239;
+			// aapt resource value: 0x7f070038
+			public const int etEmail = 2131165240;
 			
-			// aapt resource value: 0x7f07003e
-			public const int etFirstName = 2131165246;
+			// aapt resource value: 0x7f07003f
+			public const int etFirstName = 2131165247;
 			
-			// aapt resource value: 0x7f070040
-			public const int etLastName = 2131165248;
+			// aapt resource value: 0x7f070041
+			public const int etLastName = 2131165249;
 			
-			// aapt resource value: 0x7f070039
-			public const int etPassword = 2131165241;
+			// aapt resource value: 0x7f07003a
+			public const int etPassword = 2131165242;
+			
+			// aapt resource value: 0x7f070049
+			public const int etPostal = 2131165257;
 			
 			// aapt resource value: 0x7f070048
-			public const int etPostal = 2131165256;
-			
-			// aapt resource value: 0x7f070047
-			public const int etState = 2131165255;
+			public const int etState = 2131165256;
 			
 			// aapt resource value: 0x7f070000
 			public const int hybrid = 2131165184;
@@ -388,14 +394,17 @@ namespace Login
 			// aapt resource value: 0x7f07000e
 			public const int linearCreateEvent = 2131165198;
 			
-			// aapt resource value: 0x7f07002f
-			public const int listViewFriends = 2131165231;
+			// aapt resource value: 0x7f070030
+			public const int listViewFriends = 2131165232;
 			
-			// aapt resource value: 0x7f070032
-			public const int lvInvitationPage = 2131165234;
+			// aapt resource value: 0x7f070033
+			public const int lvInvitationPage = 2131165235;
 			
 			// aapt resource value: 0x7f070026
 			public const int lvInviteEvents = 2131165222;
+			
+			// aapt resource value: 0x7f07004e
+			public const int lvUninvite = 2131165262;
 			
 			// aapt resource value: 0x7f070001
 			public const int none = 2131165185;
@@ -406,8 +415,8 @@ namespace Login
 			// aapt resource value: 0x7f070003
 			public const int satellite = 2131165187;
 			
-			// aapt resource value: 0x7f070043
-			public const int slMap = 2131165251;
+			// aapt resource value: 0x7f070044
+			public const int slMap = 2131165252;
 			
 			// aapt resource value: 0x7f070008
 			public const int standard = 2131165192;
@@ -436,8 +445,8 @@ namespace Login
 			// aapt resource value: 0x7f070015
 			public const int tvCETime = 2131165205;
 			
-			// aapt resource value: 0x7f070041
-			public const int tvConfirmPassword = 2131165249;
+			// aapt resource value: 0x7f070042
+			public const int tvConfirmPassword = 2131165250;
 			
 			// aapt resource value: 0x7f07001f
 			public const int tvEditEmail = 2131165215;
@@ -454,8 +463,8 @@ namespace Login
 			// aapt resource value: 0x7f070021
 			public const int tvEditPhoneNumber = 2131165217;
 			
-			// aapt resource value: 0x7f070036
-			public const int tvEmail = 2131165238;
+			// aapt resource value: 0x7f070037
+			public const int tvEmail = 2131165239;
 			
 			// aapt resource value: 0x7f070025
 			public const int tvEventInviteError = 2131165221;
@@ -472,29 +481,32 @@ namespace Login
 			// aapt resource value: 0x7f070029
 			public const int tvFPPhone = 2131165225;
 			
+			// aapt resource value: 0x7f07003e
+			public const int tvFirstName = 2131165246;
+			
+			// aapt resource value: 0x7f07002f
+			public const int tvFriendsTest = 2131165231;
+			
+			// aapt resource value: 0x7f070036
+			public const int tvIUError = 2131165238;
+			
+			// aapt resource value: 0x7f070031
+			public const int tvInvitationPageError = 2131165233;
+			
+			// aapt resource value: 0x7f070040
+			public const int tvLastName = 2131165248;
+			
+			// aapt resource value: 0x7f070039
+			public const int tvPassword = 2131165241;
+			
 			// aapt resource value: 0x7f07003d
-			public const int tvFirstName = 2131165245;
+			public const int tvTest = 2131165245;
 			
-			// aapt resource value: 0x7f07002e
-			public const int tvFriendsTest = 2131165230;
+			// aapt resource value: 0x7f07004c
+			public const int tvUninviteError = 2131165260;
 			
-			// aapt resource value: 0x7f070035
-			public const int tvIUError = 2131165237;
-			
-			// aapt resource value: 0x7f070030
-			public const int tvInvitationPageError = 2131165232;
-			
-			// aapt resource value: 0x7f07003f
-			public const int tvLastName = 2131165247;
-			
-			// aapt resource value: 0x7f070038
-			public const int tvPassword = 2131165240;
-			
-			// aapt resource value: 0x7f07003c
-			public const int tvTest = 2131165244;
-			
-			// aapt resource value: 0x7f07004b
-			public const int tvUserInfo = 2131165259;
+			// aapt resource value: 0x7f07004f
+			public const int tvUserInfo = 2131165263;
 			
 			// aapt resource value: 0x7f070009
 			public const int wide = 2131165193;

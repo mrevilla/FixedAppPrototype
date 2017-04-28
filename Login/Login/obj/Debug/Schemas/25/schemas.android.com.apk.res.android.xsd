@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>4/27/2017 9:40:19 AM</xs:documentation>
+    <xs:documentation>4/27/2017 5:40:09 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -18401,6 +18401,7 @@
           <xs:restriction base="xs:string">
             <xs:enumeration value="@+id/" />
             <xs:enumeration value="@+id/checkedTextView1" />
+            <xs:enumeration value="@id/btnAddFriends" />
             <xs:enumeration value="@id/btnAddress" />
             <xs:enumeration value="@id/btnCECreateEvent" />
             <xs:enumeration value="@id/btnCEDate" />
@@ -18417,6 +18418,7 @@
             <xs:enumeration value="@id/btnLogout" />
             <xs:enumeration value="@id/btnMap" />
             <xs:enumeration value="@id/btnRegister" />
+            <xs:enumeration value="@id/btnRevoke" />
             <xs:enumeration value="@id/btnSaveLocation" />
             <xs:enumeration value="@id/btnSelectLocation" />
             <xs:enumeration value="@id/btnSendInvites" />
@@ -18442,6 +18444,7 @@
             <xs:enumeration value="@id/listViewFriends" />
             <xs:enumeration value="@id/lvInvitationPage" />
             <xs:enumeration value="@id/lvInviteEvents" />
+            <xs:enumeration value="@id/lvUninvite" />
             <xs:enumeration value="@id/slMap" />
             <xs:enumeration value="@id/svCreateEvent" />
             <xs:enumeration value="@id/tvCEAddress" />
@@ -18469,6 +18472,7 @@
             <xs:enumeration value="@id/tvLastName" />
             <xs:enumeration value="@id/tvPassword" />
             <xs:enumeration value="@id/tvTest" />
+            <xs:enumeration value="@id/tvUninviteError" />
             <xs:enumeration value="@id/tvUserInfo" />
             <xs:enumeration value="@android:id/accessibilityActionContextClick" />
             <xs:enumeration value="@android:id/accessibilityActionScrollDown" />

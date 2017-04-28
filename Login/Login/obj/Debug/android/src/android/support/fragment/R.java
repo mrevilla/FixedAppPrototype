@@ -305,18 +305,19 @@ containing a value of this type.
         public static final int btnCECreateEvent=0x7f07001a;
         public static final int btnCEDate=0x7f070014;
         public static final int btnCETime=0x7f070016;
-        public static final int btnCreateEvent=0x7f07004f;
-        public static final int btnEditProfile=0x7f07004c;
+        public static final int btnCreateEvent=0x7f070052;
+        public static final int btnEditProfile=0x7f07004f;
         public static final int btnEditSaveChanges=0x7f070023;
-        public static final int btnEventInvite=0x7f070050;
+        public static final int btnEventInvite=0x7f070053;
         public static final int btnFPEmail=0x7f07002b;
         public static final int btnFPRemove=0x7f07002c;
-        public static final int btnFriends=0x7f07004d;
+        public static final int btnFriends=0x7f070050;
         public static final int btnInvite=0x7f070033;
         public static final int btnLogin=0x7f07003a;
-        public static final int btnLogout=0x7f070051;
-        public static final int btnMap=0x7f07004e;
+        public static final int btnLogout=0x7f070054;
+        public static final int btnMap=0x7f070051;
         public static final int btnRegister=0x7f07003b;
+        public static final int btnRevoke=0x7f07004c;
         public static final int btnSMS=0x7f07002a;
         public static final int btnSaveLocation=0x7f07004a;
         public static final int btnSelectLocation=0x7f070017;
@@ -346,6 +347,7 @@ containing a value of this type.
         public static final int listViewFriends=0x7f07002f;
         public static final int lvInvitationPage=0x7f070032;
         public static final int lvInviteEvents=0x7f070026;
+        public static final int lvUninvite=0x7f07004d;
         public static final int none=0x7f070001;
         public static final int normal=0x7f070002;
         public static final int satellite=0x7f070003;
@@ -378,7 +380,8 @@ containing a value of this type.
         public static final int tvLastName=0x7f07003f;
         public static final int tvPassword=0x7f070038;
         public static final int tvTest=0x7f07003c;
-        public static final int tvUserInfo=0x7f07004b;
+        public static final int tvUninviteError=0x7f07004b;
+        public static final int tvUserInfo=0x7f07004e;
         public static final int wide=0x7f070009;
     }
     public static final class integer {
