@@ -25,6 +25,7 @@ namespace Login
         TextView tvFriendsTest;
         ListView listFriends;
         private dynamic jsonData;
+        private static string serializedResponse;
         SortedList<string, Friend> peopleSortedList = new SortedList<string, Friend>();
         List<string> names = new List<string>();
 
@@ -46,7 +47,7 @@ namespace Login
             try
             {
                 
-                string serializedResponse = await MakeGetRequest(url);
+                serializedResponse = await MakeGetRequest(url);
                 jsonData = JsonConvert.DeserializeObject(serializedResponse);
             }
             catch (Exception e)
@@ -86,6 +87,16 @@ namespace Login
             listFriends.Adapter = adapter;
             listFriends.ItemClick += ListFriends_ItemClick;
 
+            Button btnAddFriends = (Button) FindViewById(Resource.Id.btnAddFriends);
+            btnAddFriends.Click += BtnAddFriends_Click;
+        }
+
+        private void BtnAddFriends_Click(object sender, EventArgs e)
+        {
+            Intent toAddFriends = new Intent(this, typeof(AddFriends));
+            toAddFriends.PutExtra("friends", serializedResponse); 
+            toAddFriends.PutExtra("token", AccessToken); 
+            StartActivity(toAddFriends);
         }
 
         protected async override void OnResume()
