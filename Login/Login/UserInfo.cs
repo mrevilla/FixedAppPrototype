@@ -136,17 +136,13 @@ namespace Login
             StartActivity(toEditProfile);
         }
 
-        private void BtnAddFriends_Click(object sender, EventArgs e)
-        {
-            //Intent activityUserInfo = new Intent(this, typeof(AddFriends));
-            //activityUserInfo.PutExtra("token", AccessToken);
-            //StartActivity(activityUserInfo);
-        }
+
 
         private void BtnFriends_Click(object sender, EventArgs e)
         {
             Intent activityUserInfo = new Intent(this, typeof(Friends));
             activityUserInfo.PutExtra("token", AccessToken);
+            activityUserInfo.PutExtra("userName", userName);
             StartActivity(activityUserInfo);
         }
 

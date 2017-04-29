@@ -28,7 +28,6 @@ namespace Login
         private static string serializedResponse;
         SortedList<string, Friend> peopleSortedList = new SortedList<string, Friend>();
         List<string> names = new List<string>();
-        
 
         protected  async override void OnCreate(Bundle savedInstanceState)
         {
@@ -38,7 +37,9 @@ namespace Login
             // Create your application here
             SetContentView(Resource.Layout.Friends);
 
+            //get accesstoken
             AccessToken = Intent.GetStringExtra("token");
+
 
             tvFriendsTest = (TextView)FindViewById(Resource.Id.tvFriendsTest);
             listFriends = (ListView) FindViewById(Resource.Id.listViewFriends);
@@ -168,9 +169,11 @@ namespace Login
 
         private void BtnPending_Click(object sender, EventArgs e)
         {
-            Intent toPendingFriends = new Intent(this,typeof(PendingFriends));
+
+            Intent toPendingFriends = new Intent(this, typeof(PendingFriends));
+
             toPendingFriends.PutExtra("token", AccessToken);
-            toPendingFriends.PutExtra("response", serializedResponse); 
+            toPendingFriends.PutExtra("response", serializedResponse);
             StartActivity(toPendingFriends);
         }
 

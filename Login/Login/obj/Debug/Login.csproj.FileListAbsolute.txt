@@ -172,6 +172,9 @@ D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\eventinvite.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\invite_uninvite.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\invitationpage.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\uninvitepage.xml
+D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\addfriends.xml
+D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\pendingfriends.xml
+D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\pendingprofile.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\main.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\values\strings.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\drawable\icon.png
@@ -210,8 +213,5 @@ D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.Runtime.
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.ServiceModel.Internals.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.Xml.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
-D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\addfriends.xml
-D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\pendingfriends.xml
-D:\Github\FixedAppPrototype\Login\Login\obj\Debug\res\layout\pendingprofile.xml
 D:\Github\FixedAppPrototype\Login\Login\obj\Debug\Login.dll.mdb
 D:\Github\FixedAppPrototype\Login\Login\bin\Debug\Login.dll.mdb

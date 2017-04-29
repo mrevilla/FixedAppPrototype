@@ -52,8 +52,6 @@ namespace Login
             tvFPEmail.Text = friend.userName;
             tvFPPhone.Text = friend.PhoneNumber;
 
-            tvFPError.Text = friend.newFriendId;
-
             if (friend.PhoneNumber != null)
             {
                 btnSMS.Visibility = ViewStates.Visible;
@@ -83,7 +81,7 @@ namespace Login
                 string response = await MakePostRequest(url, true);
                 Finish();
             }
-            catch (Exception exception)
+            catch 
             {
                 tvFPError.Text = "ERROR"; 
             }
