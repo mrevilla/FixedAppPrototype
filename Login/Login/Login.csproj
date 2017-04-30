@@ -118,6 +118,8 @@
     <Compile Include="CreateEvent.cs" />
     <Compile Include="Event.cs" />
     <Compile Include="EventInvite.cs" />
+    <Compile Include="EventList.cs" />
+    <Compile Include="EventProfile.cs" />
     <Compile Include="Friend.cs" />
     <Compile Include="FriendProfile.cs" />
     <Compile Include="Friends.cs" />
@@ -179,6 +181,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\PendingProfile.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\EventList.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\EventProfile.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

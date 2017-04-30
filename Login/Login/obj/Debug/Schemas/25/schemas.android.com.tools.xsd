@@ -2,7 +2,7 @@
 <xs:schema xmlns:tools="http://schemas.android.com/tools" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/tools" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>4/28/2017 7:33:28 PM</xs:documentation>
+    <xs:documentation>4/29/2017 5:28:05 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="layout">
     <xs:annotation>
@@ -16,6 +16,8 @@
             <xs:enumeration value="@layout/createevent" />
             <xs:enumeration value="@layout/editprofile" />
             <xs:enumeration value="@layout/eventinvite" />
+            <xs:enumeration value="@layout/eventlist" />
+            <xs:enumeration value="@layout/eventprofile" />
             <xs:enumeration value="@layout/friendprofile" />
             <xs:enumeration value="@layout/friends" />
             <xs:enumeration value="@layout/invitationpage" />
@@ -79,6 +81,8 @@
             <xs:enumeration value="@layout/createevent" />
             <xs:enumeration value="@layout/editprofile" />
             <xs:enumeration value="@layout/eventinvite" />
+            <xs:enumeration value="@layout/eventlist" />
+            <xs:enumeration value="@layout/eventprofile" />
             <xs:enumeration value="@layout/friendprofile" />
             <xs:enumeration value="@layout/friends" />
             <xs:enumeration value="@layout/invitationpage" />
@@ -142,6 +146,8 @@
             <xs:enumeration value="@layout/createevent" />
             <xs:enumeration value="@layout/editprofile" />
             <xs:enumeration value="@layout/eventinvite" />
+            <xs:enumeration value="@layout/eventlist" />
+            <xs:enumeration value="@layout/eventprofile" />
             <xs:enumeration value="@layout/friendprofile" />
             <xs:enumeration value="@layout/friends" />
             <xs:enumeration value="@layout/invitationpage" />
@@ -205,6 +211,8 @@
             <xs:enumeration value="@layout/createevent" />
             <xs:enumeration value="@layout/editprofile" />
             <xs:enumeration value="@layout/eventinvite" />
+            <xs:enumeration value="@layout/eventlist" />
+            <xs:enumeration value="@layout/eventprofile" />
             <xs:enumeration value="@layout/friendprofile" />
             <xs:enumeration value="@layout/friends" />
             <xs:enumeration value="@layout/invitationpage" />

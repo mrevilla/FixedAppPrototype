@@ -81,6 +81,17 @@ namespace Login
             Button btnEventInvite = (Button) FindViewById(Resource.Id.btnEventInvite);
             btnEventInvite.Click += BtnEventInvite_Click;
 
+            Button btnEvents = (Button) FindViewById(Resource.Id.btnEvents);
+            btnEvents.Click += BtnEvents_Click;
+
+        }
+
+        private void BtnEvents_Click(object sender, EventArgs e)
+        {
+            Intent toEventList = new Intent(this,typeof(EventList));
+            toEventList.PutExtra("token", AccessToken);
+            toEventList.PutExtra("userName", userName);
+            StartActivity(toEventList);
         }
 
         private void BtnEventInvite_Click(object sender, EventArgs e)
@@ -100,7 +111,7 @@ namespace Login
 
         private void BtnMap_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         protected async override void OnResume()

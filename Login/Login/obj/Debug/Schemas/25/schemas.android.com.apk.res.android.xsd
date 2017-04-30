@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>4/28/2017 7:33:28 PM</xs:documentation>
+    <xs:documentation>4/29/2017 5:28:05 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -18412,14 +18412,19 @@
             <xs:enumeration value="@id/btnDeny" />
             <xs:enumeration value="@id/btnEditProfile" />
             <xs:enumeration value="@id/btnEditSaveChanges" />
+            <xs:enumeration value="@id/btnETDelete" />
+            <xs:enumeration value="@id/btnETSave" />
             <xs:enumeration value="@id/btnEventInvite" />
+            <xs:enumeration value="@id/btnEvents" />
             <xs:enumeration value="@id/btnFPEmail" />
             <xs:enumeration value="@id/btnFPRemove" />
+            <xs:enumeration value="@id/btnFriendEvents" />
             <xs:enumeration value="@id/btnFriends" />
             <xs:enumeration value="@id/btnInvite" />
             <xs:enumeration value="@id/btnLogin" />
             <xs:enumeration value="@id/btnLogout" />
             <xs:enumeration value="@id/btnMap" />
+            <xs:enumeration value="@id/btnMyEvents" />
             <xs:enumeration value="@id/btnPending" />
             <xs:enumeration value="@id/btnRegister" />
             <xs:enumeration value="@id/btnRevoke" />
@@ -18428,6 +18433,7 @@
             <xs:enumeration value="@id/btnSendInvites" />
             <xs:enumeration value="@id/btnSMS" />
             <xs:enumeration value="@id/btnUninvite" />
+            <xs:enumeration value="@id/epMap" />
             <xs:enumeration value="@id/etAddress1" />
             <xs:enumeration value="@id/etAddress2" />
             <xs:enumeration value="@id/etCEDetails" />
@@ -18439,20 +18445,34 @@
             <xs:enumeration value="@id/etEditLastName" />
             <xs:enumeration value="@id/etEditPhoneNumber" />
             <xs:enumeration value="@id/etEmail" />
+            <xs:enumeration value="@id/etEPAddress1" />
+            <xs:enumeration value="@id/etEPAddress2" />
+            <xs:enumeration value="@id/etEPCity" />
+            <xs:enumeration value="@id/etEPDateTime" />
+            <xs:enumeration value="@id/etEPDetails" />
+            <xs:enumeration value="@id/etEPEventHost" />
+            <xs:enumeration value="@id/etEPEventName" />
+            <xs:enumeration value="@id/etEPLatitude" />
+            <xs:enumeration value="@id/etEPLongitude" />
+            <xs:enumeration value="@id/etEPPostal" />
+            <xs:enumeration value="@id/etEPState" />
             <xs:enumeration value="@id/etFirstName" />
             <xs:enumeration value="@id/etLastName" />
             <xs:enumeration value="@id/etPassword" />
             <xs:enumeration value="@id/etPostal" />
             <xs:enumeration value="@id/etState" />
             <xs:enumeration value="@id/linearCreateEvent" />
+            <xs:enumeration value="@id/linearEventProfile" />
             <xs:enumeration value="@id/listViewFriends" />
             <xs:enumeration value="@id/lvAddFriends" />
+            <xs:enumeration value="@id/lvAllEvents" />
             <xs:enumeration value="@id/lvInvitationPage" />
             <xs:enumeration value="@id/lvInviteEvents" />
             <xs:enumeration value="@id/lvPending" />
             <xs:enumeration value="@id/lvUninvite" />
             <xs:enumeration value="@id/slMap" />
             <xs:enumeration value="@id/svCreateEvent" />
+            <xs:enumeration value="@id/svEventProfile" />
             <xs:enumeration value="@id/tvAddFriendsError" />
             <xs:enumeration value="@id/tvCEAddress" />
             <xs:enumeration value="@id/tvCEDate" />
@@ -18466,7 +18486,9 @@
             <xs:enumeration value="@id/tvEditFirstName" />
             <xs:enumeration value="@id/tvEditLastName" />
             <xs:enumeration value="@id/tvEditPhoneNumber" />
+            <xs:enumeration value="@id/tvELError" />
             <xs:enumeration value="@id/tvEmail" />
+            <xs:enumeration value="@id/tvEPError" />
             <xs:enumeration value="@id/tvEventInviteError" />
             <xs:enumeration value="@id/tvFirstName" />
             <xs:enumeration value="@id/tvFPEmail" />

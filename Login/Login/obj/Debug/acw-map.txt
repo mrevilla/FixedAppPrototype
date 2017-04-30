@@ -10,6 +10,14 @@ Login.EventInvite, Login;md533583cc845b761e36e0b683119bc5692.EventInvite
 Login.EventInvite, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.EventInvite
 Login.EventInvite;md533583cc845b761e36e0b683119bc5692.EventInvite
 login.EventInvite;md533583cc845b761e36e0b683119bc5692.EventInvite
+Login.EventList, Login;md533583cc845b761e36e0b683119bc5692.EventList
+Login.EventList, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.EventList
+Login.EventList;md533583cc845b761e36e0b683119bc5692.EventList
+login.EventList;md533583cc845b761e36e0b683119bc5692.EventList
+Login.EventProfile, Login;md533583cc845b761e36e0b683119bc5692.EventProfile
+Login.EventProfile, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.EventProfile
+Login.EventProfile;md533583cc845b761e36e0b683119bc5692.EventProfile
+login.EventProfile;md533583cc845b761e36e0b683119bc5692.EventProfile
 Login.FriendProfile, Login;md533583cc845b761e36e0b683119bc5692.FriendProfile
 Login.FriendProfile, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.FriendProfile
 Login.FriendProfile;md533583cc845b761e36e0b683119bc5692.FriendProfile
