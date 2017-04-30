@@ -61,7 +61,9 @@ namespace Login
             etEPEventHost = (EditText) FindViewById(Resource.Id.etEPEventHost);
 
             Button btnETSave = (Button)FindViewById(Resource.Id.btnETSave);
+            btnETSave.Click += BtnETSave_Click;
             Button btnETDelete = (Button)FindViewById(Resource.Id.btnETDelete);
+            btnETDelete.Click += BtnETDelete_Click;
 
             //get the intents data
             eventId = Intent.GetStringExtra("eventId");
@@ -112,19 +114,31 @@ namespace Login
 
                 
                 btnETSave.Visibility = ViewStates.Gone;
-                btnETSave.Click += BtnETSave_Click;
+                
 
                 
                 btnETDelete.Visibility = ViewStates.Gone;
-                btnETDelete.Click += BtnETDelete_Click;
+                
             }
 
             SetUpMap();
         }
 
-        private void BtnETDelete_Click(object sender, EventArgs e)
+        private async void BtnETDelete_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            string deleteUrl = GetString(Resource.String.IP) + "api/Events/" + eventId;
+      
+            try
+            {
+                string response = await MakeDeleteRequest(deleteUrl, true);
+                Toast.MakeText(this, "Event Deleted", ToastLength.Short).Show();
+                Finish();
+            }
+            catch
+            {
+                tvEPError.Text = "ERROR IN DELETING";
+            }
+          
         }
 
         private void BtnETSave_Click(object sender, EventArgs e)
@@ -166,7 +180,7 @@ namespace Login
             
 
       
-            LatLng latlng = new LatLng(requestedEvent.Longitude, requestedEvent.Latitude);
+            LatLng latlng = new LatLng(requestedEvent.Latitude, requestedEvent.Longitude);
             CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(latlng, 15);
             epMap.MoveCamera(camera);
             //place a pin where the event is located
@@ -185,6 +199,34 @@ namespace Login
         public void OnMapLongClick(LatLng point)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<string> MakeDeleteRequest(string url, bool isJson)
+        {
+            //simple request function 
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            if (isJson)
+                request.ContentType = "application/json";
+            else
+                request.ContentType = "application/x-www-form-urlencoded";
+
+            request.Method = "DELETE";
+            request.Headers.Add("Authorization", "Bearer " + AccessToken);
+            var stream = await request.GetRequestStreamAsync();
+            using (var writer = new StreamWriter(stream))
+            {
+                
+                writer.Flush();
+                writer.Dispose();
+            }
+
+            var response = await request.GetResponseAsync();
+            var respStream = response.GetResponseStream();
+
+            using (StreamReader sr = new StreamReader(respStream))
+            {
+                return sr.ReadToEnd();
+            }
         }
     }
 }

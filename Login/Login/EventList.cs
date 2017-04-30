@@ -31,10 +31,10 @@ namespace Login
             SetContentView(Resource.Layout.EventList);
 
             //set views
-            tvELError = (TextView) FindViewById(Resource.Id.tvELError);
-            lvAllEvents = (ListView) FindViewById(Resource.Id.lvAllEvents);
+            tvELError = (TextView)FindViewById(Resource.Id.tvELError);
+            lvAllEvents = (ListView)FindViewById(Resource.Id.lvAllEvents);
             lvAllEvents.FastScrollEnabled = true;
-            
+
 
             //get intent data
             AccessToken = Intent.GetStringExtra("token");
@@ -89,8 +89,61 @@ namespace Login
             lvAllEvents.ItemClick += LvAllEvents_ItemClick;
 
             //button for my events
-            Button btnMyEvents = (Button) FindViewById(Resource.Id.btnMyEvents);
+            Button btnMyEvents = (Button)FindViewById(Resource.Id.btnMyEvents);
             btnMyEvents.Click += BtnMyEvents_Click;
+        }
+
+        protected async override void OnResume()
+        {
+            base.OnResume();
+
+            // get get an updated event list from the database
+            string urlEvents = GetString(Resource.String.IP) + "api/events";
+            string urlAttending = GetString(Resource.String.IP) + "api/attendances";
+
+            dynamic eventData;
+            dynamic attendingData;
+
+
+            try
+            {
+                string eventsResponse = await MakeGetRequest(urlEvents);
+                string attendingResponse = await MakeGetRequest(urlAttending);
+                eventData = JsonConvert.DeserializeObject(eventsResponse);
+                attendingData = JsonConvert.DeserializeObject(attendingResponse);
+
+                relatedEvents.Clear();
+                //get all the events that the user is hosting
+                foreach (var x in eventData)
+                {
+
+                    //filter out the events not owned by the user
+                    if (x.Username == userName)
+                    {
+
+                        relatedEvents.Add(x.Name.ToString() + " - " + userName, x.EventId.ToString());
+                    }
+                }
+
+                //get all the events the user is invited to
+                foreach (var x in attendingData)
+                {
+                    relatedEvents.Add(x.EventName.ToString() + " - " + x.EventOwner.ToString(),
+                        x.EventId.ToString());
+                }
+
+                ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1,
+                    relatedEvents.Keys.ToArray());
+                lvAllEvents.Adapter = adapter;
+
+
+            }
+            catch
+            {
+                tvELError.Text = "ERROR ON RESUME";
+            }
+
+
         }
 
         private void LvAllEvents_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
@@ -105,7 +158,10 @@ namespace Login
 
         private void BtnMyEvents_Click(object sender, EventArgs e)
         {
-            
+            Intent toMyEvents = new Intent(this, typeof(MyEvents));
+            toMyEvents.PutExtra("token", AccessToken);
+            toMyEvents.PutExtra("userName", userName);
+            StartActivity(toMyEvents);
         }
 
         public static async Task<string> MakeGetRequest(string url)

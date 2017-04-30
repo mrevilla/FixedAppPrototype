@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>4/29/2017 5:28:05 PM</xs:documentation>
+    <xs:documentation>4/30/2017 10:37:43 AM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -18468,6 +18468,7 @@
             <xs:enumeration value="@id/lvAllEvents" />
             <xs:enumeration value="@id/lvInvitationPage" />
             <xs:enumeration value="@id/lvInviteEvents" />
+            <xs:enumeration value="@id/lvMyEvents" />
             <xs:enumeration value="@id/lvPending" />
             <xs:enumeration value="@id/lvUninvite" />
             <xs:enumeration value="@id/slMap" />
@@ -18499,6 +18500,7 @@
             <xs:enumeration value="@id/tvInvitationPageError" />
             <xs:enumeration value="@id/tvIUError" />
             <xs:enumeration value="@id/tvLastName" />
+            <xs:enumeration value="@id/tvMyEventsError" />
             <xs:enumeration value="@id/tvPassword" />
             <xs:enumeration value="@id/tvPendingError" />
             <xs:enumeration value="@id/tvPPEmail" />

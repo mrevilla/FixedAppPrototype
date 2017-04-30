@@ -126,6 +126,7 @@
     <Compile Include="InvitationPage.cs" />
     <Compile Include="Invite_Uninvite.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="MyEvents.cs" />
     <Compile Include="PendingFriends.cs" />
     <Compile Include="PendingProfile.cs" />
     <Compile Include="Register.cs" />
@@ -187,6 +188,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\EventProfile.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\MyEvents.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

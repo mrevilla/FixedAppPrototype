@@ -28,6 +28,7 @@
         <category android:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    <activity android:label="MyEvents" android:name="md533583cc845b761e36e0b683119bc5692.MyEvents" />
     <activity android:label="PendingFriends" android:name="md533583cc845b761e36e0b683119bc5692.PendingFriends" />
     <activity android:label="PendingProfile" android:name="md533583cc845b761e36e0b683119bc5692.PendingProfile" />
     <activity android:label="Register" android:name="md533583cc845b761e36e0b683119bc5692.Register" />

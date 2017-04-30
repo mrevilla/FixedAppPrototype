@@ -38,6 +38,10 @@ Login.MainActivity, Login;md533583cc845b761e36e0b683119bc5692.MainActivity
 Login.MainActivity, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.MainActivity
 Login.MainActivity;md533583cc845b761e36e0b683119bc5692.MainActivity
 login.MainActivity;md533583cc845b761e36e0b683119bc5692.MainActivity
+Login.MyEvents, Login;md533583cc845b761e36e0b683119bc5692.MyEvents
+Login.MyEvents, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.MyEvents
+Login.MyEvents;md533583cc845b761e36e0b683119bc5692.MyEvents
+login.MyEvents;md533583cc845b761e36e0b683119bc5692.MyEvents
 Login.PendingFriends, Login;md533583cc845b761e36e0b683119bc5692.PendingFriends
 Login.PendingFriends, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.PendingFriends
 Login.PendingFriends;md533583cc845b761e36e0b683119bc5692.PendingFriends
