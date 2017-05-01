@@ -123,6 +123,7 @@
     <Compile Include="Friend.cs" />
     <Compile Include="FriendProfile.cs" />
     <Compile Include="Friends.cs" />
+    <Compile Include="FriendsEvents.cs" />
     <Compile Include="InvitationPage.cs" />
     <Compile Include="Invite_Uninvite.cs" />
     <Compile Include="MainActivity.cs" />
@@ -191,6 +192,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\MyEvents.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\FriendsEvents.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

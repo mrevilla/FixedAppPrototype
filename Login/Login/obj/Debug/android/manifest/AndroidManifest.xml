@@ -20,6 +20,7 @@
     <activity android:label="EventProfile" android:name="md533583cc845b761e36e0b683119bc5692.EventProfile" />
     <activity android:label="FriendProfile" android:name="md533583cc845b761e36e0b683119bc5692.FriendProfile" />
     <activity android:label="Friends" android:name="md533583cc845b761e36e0b683119bc5692.Friends" />
+    <activity android:label="FriendsEvents" android:name="md533583cc845b761e36e0b683119bc5692.FriendsEvents" />
     <activity android:label="InvitationPage" android:name="md533583cc845b761e36e0b683119bc5692.InvitationPage" />
     <activity android:label="Invite_Uninvite" android:name="md533583cc845b761e36e0b683119bc5692.Invite_Uninvite" />
     <activity android:icon="@drawable/icon" android:label="Login" android:name="md533583cc845b761e36e0b683119bc5692.MainActivity">

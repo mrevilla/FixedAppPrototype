@@ -91,6 +91,17 @@ namespace Login
             //button for my events
             Button btnMyEvents = (Button)FindViewById(Resource.Id.btnMyEvents);
             btnMyEvents.Click += BtnMyEvents_Click;
+
+            Button btnFriendEvents = (Button) FindViewById(Resource.Id.btnFriendEvents);
+            btnFriendEvents.Click += BtnFriendEvents_Click;
+        }
+
+        private void BtnFriendEvents_Click(object sender, EventArgs e)
+        {
+            Intent toFriendsEvents = new Intent(this, typeof(FriendsEvents));
+            toFriendsEvents.PutExtra("token", AccessToken);
+            toFriendsEvents.PutExtra("userName", userName);
+            StartActivity(toFriendsEvents);
         }
 
         protected async override void OnResume()
@@ -136,7 +147,7 @@ namespace Login
                     relatedEvents.Keys.ToArray());
                 lvAllEvents.Adapter = adapter;
 
-
+                tvELError.Text = ""; 
             }
             catch
             {
