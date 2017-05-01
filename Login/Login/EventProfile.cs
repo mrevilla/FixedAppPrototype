@@ -143,7 +143,7 @@ namespace Login
 
         private void BtnETSave_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            
         }
 
         public static async Task<string> MakeGetRequest(string url)
@@ -198,7 +198,7 @@ namespace Login
 
         public void OnMapLongClick(LatLng point)
         {
-            throw new NotImplementedException();
+            
         }
 
         public async Task<string> MakeDeleteRequest(string url, bool isJson)

@@ -2,7 +2,7 @@
 <xs:schema xmlns:android="http://schemas.android.com/apk/res/android" attributeFormDefault="qualified" targetNamespace="http://schemas.android.com/apk/res/android" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:annotation>
     <xs:documentation>v25</xs:documentation>
-    <xs:documentation>4/30/2017 3:16:47 PM</xs:documentation>
+    <xs:documentation>4/30/2017 11:08:51 PM</xs:documentation>
   </xs:annotation>
   <xs:attribute name="accessibilityLiveRegion">
     <xs:annotation>
@@ -18424,6 +18424,8 @@
             <xs:enumeration value="@id/btnLogin" />
             <xs:enumeration value="@id/btnLogout" />
             <xs:enumeration value="@id/btnMap" />
+            <xs:enumeration value="@id/btnMVDelete" />
+            <xs:enumeration value="@id/btnMVSave" />
             <xs:enumeration value="@id/btnMyEvents" />
             <xs:enumeration value="@id/btnPending" />
             <xs:enumeration value="@id/btnRegister" />
@@ -18458,21 +18460,36 @@
             <xs:enumeration value="@id/etEPState" />
             <xs:enumeration value="@id/etFirstName" />
             <xs:enumeration value="@id/etLastName" />
+            <xs:enumeration value="@id/etMVAddress1" />
+            <xs:enumeration value="@id/etMVAddress2" />
+            <xs:enumeration value="@id/etMVCity" />
+            <xs:enumeration value="@id/etMVDateTime" />
+            <xs:enumeration value="@id/etMVDetails" />
+            <xs:enumeration value="@id/etMVEventHost" />
+            <xs:enumeration value="@id/etMVEventName" />
+            <xs:enumeration value="@id/etMVLatitude" />
+            <xs:enumeration value="@id/etMVLongitude" />
+            <xs:enumeration value="@id/etMVPostal" />
+            <xs:enumeration value="@id/etMVState" />
             <xs:enumeration value="@id/etPassword" />
             <xs:enumeration value="@id/etPostal" />
             <xs:enumeration value="@id/etState" />
             <xs:enumeration value="@id/linearCreateEvent" />
+            <xs:enumeration value="@id/linearEventMap" />
             <xs:enumeration value="@id/linearEventProfile" />
             <xs:enumeration value="@id/listViewFriends" />
             <xs:enumeration value="@id/lvAddFriends" />
             <xs:enumeration value="@id/lvAllEvents" />
+            <xs:enumeration value="@id/lvFriendEvents" />
             <xs:enumeration value="@id/lvInvitationPage" />
             <xs:enumeration value="@id/lvInviteEvents" />
             <xs:enumeration value="@id/lvMyEvents" />
             <xs:enumeration value="@id/lvPending" />
             <xs:enumeration value="@id/lvUninvite" />
+            <xs:enumeration value="@id/mvMap" />
             <xs:enumeration value="@id/slMap" />
             <xs:enumeration value="@id/svCreateEvent" />
+            <xs:enumeration value="@id/svEventMap" />
             <xs:enumeration value="@id/svEventProfile" />
             <xs:enumeration value="@id/tvAddFriendsError" />
             <xs:enumeration value="@id/tvCEAddress" />
@@ -18496,10 +18513,12 @@
             <xs:enumeration value="@id/tvFPError" />
             <xs:enumeration value="@id/tvFPName" />
             <xs:enumeration value="@id/tvFPPhone" />
+            <xs:enumeration value="@id/tvFriendsEventsError" />
             <xs:enumeration value="@id/tvFriendsTest" />
             <xs:enumeration value="@id/tvInvitationPageError" />
             <xs:enumeration value="@id/tvIUError" />
             <xs:enumeration value="@id/tvLastName" />
+            <xs:enumeration value="@id/tvMVError" />
             <xs:enumeration value="@id/tvMyEventsError" />
             <xs:enumeration value="@id/tvPassword" />
             <xs:enumeration value="@id/tvPendingError" />

@@ -14,6 +14,10 @@ Login.EventList, Login;md533583cc845b761e36e0b683119bc5692.EventList
 Login.EventList, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.EventList
 Login.EventList;md533583cc845b761e36e0b683119bc5692.EventList
 login.EventList;md533583cc845b761e36e0b683119bc5692.EventList
+Login.EventMap, Login;md533583cc845b761e36e0b683119bc5692.EventMap
+Login.EventMap, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.EventMap
+Login.EventMap;md533583cc845b761e36e0b683119bc5692.EventMap
+login.EventMap;md533583cc845b761e36e0b683119bc5692.EventMap
 Login.EventProfile, Login;md533583cc845b761e36e0b683119bc5692.EventProfile
 Login.EventProfile, Login, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md533583cc845b761e36e0b683119bc5692.EventProfile
 Login.EventProfile;md533583cc845b761e36e0b683119bc5692.EventProfile

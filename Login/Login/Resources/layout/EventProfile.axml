@@ -4,109 +4,109 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:weightSum="100">
-  <fragment
-      android:layout_weight="50"
-      android:id="@+id/epMap"
-      android:layout_width="match_parent"
-      android:layout_height="0dp"
-      android:name="com.google.android.gms.maps.MapFragment" />
-  <LinearLayout
-      android:layout_weight="5"
-      android:layout_height="0dp"
-      android:layout_width="match_parent"
-      android:orientation="vertical"
-      android:minWidth="25px"
-      android:minHeight="25px">
-    <TextView
-        android:text=""
+    <fragment
+        android:layout_weight="50"
+        android:id="@+id/epMap"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvEPError" />
-  </LinearLayout>
-  <LinearLayout
-      android:layout_weight="45"
-      android:layout_height="0dp"
-      android:layout_width="match_parent"
-      android:orientation="vertical">
-    <ScrollView
+        android:layout_height="0dp"
+        android:name="com.google.android.gms.maps.MapFragment" />
+    <LinearLayout
+        android:layout_weight="5"
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
         android:minWidth="25px"
-        android:minHeight="25px"
+        android:minHeight="25px">
+        <TextView
+            android:text=""
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvEPError" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_weight="45"
+        android:layout_height="0dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/svEventProfile">
-      <LinearLayout
-          android:orientation="vertical"
-          android:minWidth="25px"
-          android:minHeight="25px"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/linearEventProfile">
-        <EditText
-            android:hint="Event Name"
+        android:orientation="vertical">
+        <ScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/etEPEventName" />
-        <EditText
-            android:hint="Event Host"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"                
-            android:id="@+id/etEPEventHost" />
-        <EditText
-            android:hint="Event Details"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"           
-            android:id="@+id/etEPDetails" />
-        <EditText
-            android:hint="Event Date/Time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"        
-            android:id="@+id/etEPDateTime" />
-        <EditText
-            android:hint="Address 1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"                
-            android:id="@+id/etEPAddress1" />
-        <EditText
-            android:hint="Address 2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"      
-            android:id="@+id/etEPAddress2" />
-        <EditText
-            android:hint="City"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"             
-            android:id="@+id/etEPCity" />
-        <EditText
-            android:hint="State (NV)"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"        
-            android:id="@+id/etEPState" />
-        <EditText
-            android:hint="Postal Code (89523)"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"        
-            android:id="@+id/etEPPostal" />
-        <EditText
-            android:hint="Longitude"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"       
-            android:id="@+id/etEPLongitude" />
-        <EditText
-            android:hint="Latitude"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"       
-            android:id="@+id/etEPLatitude" />
-        <Button
-            android:text="Save Changes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnETSave" />
-        <Button
-          android:text="Delete"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/btnETDelete" />
-      </LinearLayout>
-    </ScrollView>
-  </LinearLayout>
+            android:id="@+id/svEventProfile">
+            <LinearLayout
+                android:orientation="vertical"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/linearEventProfile">
+                <EditText
+                    android:hint="Event Name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPEventName" />
+                <EditText
+                    android:hint="Event Host"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPEventHost" />
+                <EditText
+                    android:hint="Event Details"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPDetails" />
+                <EditText
+                    android:hint="Event Date/Time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPDateTime" />
+                <EditText
+                    android:hint="Address 1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPAddress1" />
+                <EditText
+                    android:hint="Address 2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPAddress2" />
+                <EditText
+                    android:hint="City"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPCity" />
+                <EditText
+                    android:hint="State (NV)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPState" />
+                <EditText
+                    android:hint="Postal Code (89523)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPPostal" />
+                <EditText
+                    android:hint="Longitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPLongitude" />
+                <EditText
+                    android:hint="Latitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/etEPLatitude" />
+                <Button
+                    android:text="Save Changes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnETSave" />
+                <Button
+                    android:text="Delete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnETDelete" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 </LinearLayout>

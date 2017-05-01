@@ -111,7 +111,10 @@ namespace Login
 
         private void BtnMap_Click(object sender, EventArgs e)
         {
-            
+            Intent toEventMap = new Intent(this, typeof(EventMap));
+            toEventMap.PutExtra("token", AccessToken);
+            toEventMap.PutExtra("userName", userName);
+            StartActivity(toEventMap);
         }
 
         protected async override void OnResume()
