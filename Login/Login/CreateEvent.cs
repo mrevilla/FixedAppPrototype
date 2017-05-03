@@ -162,10 +162,10 @@ namespace Login
         public void OnDateSet(DatePicker view, int year, int month, int dayOfMonth)
         {
             this.year = year;
-            this.month = year;
+            this.month = month;
             this.day = dayOfMonth;
 
-            tvCEDate.Text = year.ToString() + '-' + month.ToString("00") + '-' + dayOfMonth.ToString("00");
+            tvCEDate.Text = year.ToString() + '-' + (month + 1).ToString("00") + '-' + dayOfMonth.ToString("00");
         }
 
         public void OnTimeSet(TimePicker view, int hourOfDay, int minute)
