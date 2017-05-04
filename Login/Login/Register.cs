@@ -13,6 +13,17 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 
+/***
+ * Activity that prompts the user for their information for their PartyUp account to be created.
+ * 
+ * OnCreate The function that is called after the Activity is created.
+ *
+ * BtnRegister_Click
+ * Event handler when the user tries to register with their proposed login information
+ * 
+ * MakePostRequest
+ * Sends POST Request to API
+ */
 namespace Login
 {
     [Activity(Label = "Register")]
@@ -38,6 +49,7 @@ namespace Login
             etLastName = (EditText) FindViewById(Resource.Id.etLastName);
             tvTest = (TextView)FindViewById(Resource.Id.tvTest);
 
+            //Event Handlers
             Button btnRegister = (Button)FindViewById(Resource.Id.btnRegister);
             btnRegister.Click += BtnRegister_Click;
 
@@ -47,6 +59,8 @@ namespace Login
         {
 
             /* validation check required here*/
+            
+            //Obtain the database's ip for the accounts table.
             string url = GetString(Resource.String.IP)+ "api/Account/Register";
             string data = "Email=" + etEmail.Text +"&Password=" + etPassword.Text +
                 "&ConfirmPassword=" + etConfirmPassword.Text + "&firstName=" + etFirstName.Text + 
@@ -54,6 +68,7 @@ namespace Login
 
             try
             {
+                //Get response from database.
                 string response = await MakePostRequest(url, data, false);
 
                 if (response == "")
@@ -70,14 +85,12 @@ namespace Login
                 tvTest.Text = "BAD REQUEST"; 
                 
             }
-            
-
-            
+                        
         }
 
         public async Task<string> MakePostRequest(string url, string serializedDataString, bool isJson)
         {
-            //simple request function 
+            //sets http request to be a post.
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             if (isJson)
                 request.ContentType = "application/json";
@@ -86,6 +99,8 @@ namespace Login
 
             request.Method = "POST";
             var stream = await request.GetRequestStreamAsync();
+            
+            //write data
             using (var writer = new StreamWriter(stream))
             {
                 writer.Write(serializedDataString);
@@ -93,6 +108,7 @@ namespace Login
                 writer.Dispose();
             }
 
+            //get data from API reply
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
 
