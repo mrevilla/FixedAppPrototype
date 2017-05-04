@@ -15,6 +15,24 @@ using Android.Widget;
 using Microsoft.Win32.SafeHandles;
 using Newtonsoft.Json;
 
+/***
+ * This activity lets the current user see everyone in the database that isn't their friend
+ * and gives them the option to add them as a friend.
+ *
+ * OnCreate
+ * The function that is called after the activity is created.
+ *
+ * BtnAddSelected_Click
+ * Event handler used when the user clicks on the upper right button to add selected users as
+ * as friends.
+ *
+ * MakeGetRequest
+ * Sends GET Request to API.
+ *
+ * MakePostRequest
+ * Sends HTTP Request to API.
+*/
+
 namespace Login
 {
     [Activity(Label = "AddFriends")]
@@ -92,30 +110,34 @@ namespace Login
         private async void BtnAddSelected_Click(object sender, EventArgs e)
         {
             string url = GetString(Resource.String.IP) + "api/friends";
+            
+            // Displays a listview of everyone in the database that isn't the user's friend
             var sparseArray = FindViewById<ListView>(Resource.Id.lvAddFriends).CheckedItemPositions;
             for (var i = 0; i < sparseArray.Size(); i++)
             {
                 if (sparseArray.ValueAt(i) == true)
                 {
-                   
+                    // Sets the selected user in the database
                     Friend selectedPerson = allUsers[allUsers.Keys[sparseArray.KeyAt(i)]];
 
+                    // Sets the serialization and id of the user in the database
                     string id = JsonConvert.SerializeObject(selectedPerson.newFriendId);
                     string payload = "{" + "newFriendId :" + id + "}";
 
-
+                    // Sets the post request to add a user as a friend
                     try
                     {
                         string reply = await MakePostRequest(url, payload, true);
 
                     }
+                    // Validates that the process to add a user as a friend failed
                     catch
                     {
                         tvAddFriendsError.Text = "ERROR ADDING FRIENDS";
                     }
                 }
             
-
+                // Validates that a user was added to be a friend
                 if (tvAddFriendsError.Text != "ERROR ADDING FRIENDS")
                 {
                     Toast.MakeText(this, "Friend Requests Sent", ToastLength.Short).Show();
@@ -126,15 +148,18 @@ namespace Login
 
         public static async Task<string> MakeGetRequest(string url)
         {
+            // Create URL header
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
 
+            // Get response from the API
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
             respStream.Flush();
 
+            // Read data
             using (StreamReader sr = new StreamReader(respStream))
             {
                 //Need to return this response 
@@ -146,16 +171,20 @@ namespace Login
 
         public async Task<string> MakePostRequest(string url, string serializedDataString, bool isJson)
         {
-            //simple request function 
+            //simple request function
+            // Sets http request to be a post.
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             if (isJson)
                 request.ContentType = "application/json";
             else
                 request.ContentType = "application/x-www-form-urlencoded";
 
+            // Add the token to the url
             request.Method = "POST";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
             var stream = await request.GetRequestStreamAsync();
+            
+            // Write data
             using (var writer = new StreamWriter(stream))
             {
                 writer.Write(serializedDataString);
@@ -163,6 +192,7 @@ namespace Login
                 writer.Dispose();
             }
 
+            // Get data from API reply
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
 
