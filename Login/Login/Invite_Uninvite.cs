@@ -10,6 +10,20 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+/***
+ *  The activity prompts the user which friends they can invite or uninvite to an event.
+ * 
+ * OnCreate The function that is called after the Activity is created.
+ *
+ * DELAGATES:
+ *
+ * btnInvite    
+ * Event handler used when the user wants to invite their friend to an event. 
+ * 
+ * btnUninvite    
+ * Event handler used when the user wants to uninvite their friend to an event.
+ */
+
 namespace Login
 {
     [Activity(Label = "Invite_Uninvite")]
@@ -27,6 +41,7 @@ namespace Login
 
             btnInvite.Click += delegate
             {
+                //Start InvitationPage activity with token and eventId extras.
                 Intent toInvitationPage = new Intent(this,typeof(InvitationPage));
                 string accessToken = Intent.GetStringExtra("token");
                 string eventId = Intent.GetStringExtra("eventId");
@@ -39,6 +54,8 @@ namespace Login
             Button btnUninvite = (Button)FindViewById(Resource.Id.btnUninvite);
             btnUninvite.Click += delegate
             {
+            
+                //Start UninvitePage activity with token and eventId extras.
                 Intent toUninvitePage = new Intent(this, typeof(UninvitePage));
                 string accessToken = Intent.GetStringExtra("token");
                 string eventId = Intent.GetStringExtra("eventId");
