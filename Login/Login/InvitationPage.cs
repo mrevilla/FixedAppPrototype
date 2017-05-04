@@ -13,6 +13,22 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
+/***
+ * Activity that populates a list of friends that a user can invite to an event. It then invites selected friends.
+ * 
+ * OnCreate The function that is called after the Activity is created.
+ * 
+ * BtnSendInvites_Click 
+ * Event handler used when the user selects which other users they want to invite to an event.
+ * 
+ * MakeGetRequest
+ * Sends GET Request to API
+ *
+ * MakePostRequest
+ * Sends HTTP Request to API
+ * 
+ */
+
 namespace Login
 {
     [Activity(Label = "InvitationPage")]
@@ -47,9 +63,11 @@ namespace Login
 
             try
             {
+                //obtain response string from API
                 string response = await MakeGetRequest(urlAttendees);
                 dynamic jsonAttendees = JsonConvert.DeserializeObject(response);
 
+                //loop through attendees
                 foreach (var x in jsonAttendees)
                 {
       
@@ -63,9 +81,11 @@ namespace Login
 
                 }
 
+                //obtain response from api 
                 string friendResponse = await MakeGetRequest(urlFriends);
                 dynamic jsonFriends = JsonConvert.DeserializeObject(friendResponse);
 
+                //loop through friends
                 foreach (var x in jsonFriends)
                 {
                     Friend person = new Friend();
@@ -78,7 +98,8 @@ namespace Login
 
                     friendsList.Add(person.FirstName + ' ' + person.LastName + " - " + person.userName, person);
                 }
-
+      
+                 //loop through users and see which are friends and has not already been invited to the event.
                 foreach (KeyValuePair<string, Friend> kvp in friendsList)
                 {
                     if (kvp.Value.friendshipEstablished == true.ToString() && !attendingList.ContainsKey(kvp.Key))
@@ -150,15 +171,20 @@ namespace Login
 
         public static async Task<string> MakeGetRequest(string url)
         {
+        
+            //create URL header.        
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
 
+
+            //get response from the API
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
             respStream.Flush();
 
+            //read data
             using (StreamReader sr = new StreamReader(respStream))
             {
                 //Need to return this response 
@@ -170,16 +196,20 @@ namespace Login
 
         public async Task<string> MakePostRequest(string url, string serializedDataString, bool isJson)
         {
-            //simple request function 
+            //sets http request to be a post.
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             if (isJson)
                 request.ContentType = "application/json";
             else
                 request.ContentType = "application/x-www-form-urlencoded";
 
+            //Add the token to the url
             request.Method = "POST";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
             var stream = await request.GetRequestStreamAsync();
+            
+
+            //write data            
             using (var writer = new StreamWriter(stream))
             {
                 writer.Write(serializedDataString);
@@ -187,6 +217,8 @@ namespace Login
                 writer.Dispose();
             }
 
+
+            //get data from API reply
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
 
