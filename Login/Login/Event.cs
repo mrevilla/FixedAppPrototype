@@ -10,10 +10,17 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+/***
+ * Class that allows for a given event to be described, such as Name, Details,
+ * the user's Username that is hosting, and location attributes like, "City",
+ * "Latitude", "Longitude".
+*/
+
 namespace Login
 {
     class Event
     {
+        // Declare Name, Details, Username, etc. to describe a given event
         public string Name;
         public string EventDateTime;
         public string Details;
