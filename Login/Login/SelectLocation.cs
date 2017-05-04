@@ -18,6 +18,29 @@ using Android.Widget;
 using Newtonsoft.Json;
 using Thread = Java.Lang.Thread;
 
+/***
+ *  Activity for selecting a location of where a user is hosting an event. The location
+ * can be chosen at a specific location using Google Maps or manually typed in.
+ *
+ * OnCreate 
+ * The function that is called after the Activity is created. 
+ *
+ * BtnSaveLocation_Click
+ * Event handler used when the user attempts to save the location
+ * 
+ * OnMapLongClick
+ *
+ * BtnAddress_Click
+ *
+ * SetUpMap
+ * 
+ * OnMapReady
+ *
+ * MakeGetRequest    
+ * Sends GET Request to API
+ * 
+ */
+
 namespace Login
 {
     [Activity(Label = "SelectLocation")]
@@ -46,7 +69,8 @@ namespace Login
             etCity = (EditText)FindViewById(Resource.Id.etCity);
             etState = (EditText)FindViewById(Resource.Id.etState);
             etPostal = (EditText)FindViewById(Resource.Id.etPostal);
-
+            
+            //EVENT HANDLERS
             Button btnAddress = (Button)FindViewById(Resource.Id.btnAddress);
             btnAddress.Click += BtnAddress_Click;
 
@@ -57,6 +81,7 @@ namespace Login
 
         private void BtnSaveLocation_Click(object sender, EventArgs e)
         {
+            //if input was valid, save the daata and return the extras
             if (etAddress1.Text != null && etCity.Text != null && etState.Text != null && lat != 0.0 && lng != 0.0) 
             {
                 Intent returnIntent = new Intent(this, typeof(CreateEvent));
