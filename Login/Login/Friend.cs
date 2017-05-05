@@ -9,11 +9,16 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+/***
+ * Friends.cs: Declares the friends class
+ *
+ ***/
 
 namespace Login
 {
     class Friend
     {
+        // data members composing friend
         public string newFriendId;
         public string friendshipEstablished;
         public string userName;
