@@ -11,11 +11,18 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 
+/***
+ * Class that describes which users are going to an event and what specific event it is.
+*/
+
 namespace Login
 {
     class Attendee
     {
+        // Declare Event ID
         public string EventId;
+        
+        // Declare Attendee ID
         public string AttendeeId;
     }
 }
