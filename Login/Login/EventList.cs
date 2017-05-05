@@ -13,6 +13,31 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
+/***
+ * Populates a list of all events, the current user’s and all the the user’s friends.
+ *
+ * OnCreate
+ * The function that is called after the activity is created.
+ *
+ * BtnFriendEvents_Click
+ * Event handler used when the user taps the button to display a list of the events
+ * (created by the current user's friends) that the current user has been invited to
+ *
+ * OnResume
+ * The function that is called after the activity is visible to the user again.
+ *
+ * LvAllEvents_ItemClick
+ * Event handler used when the user taps an event and wants to view all the details
+ * of the event. Allows the event to be deleted if it's the current user's event.
+ *
+ * BtnMyEvents_Click
+ * Event handler used when the user taps the button to display a list of the events
+ * that the current user has created
+ *
+ * MakeGetRequest
+ * Sends GET Request to API.
+*/
+
 namespace Login
 {
     [Activity(Label = "EventList")]
@@ -92,12 +117,15 @@ namespace Login
             Button btnMyEvents = (Button)FindViewById(Resource.Id.btnMyEvents);
             btnMyEvents.Click += BtnMyEvents_Click;
 
+            //button for my friends' events
             Button btnFriendEvents = (Button) FindViewById(Resource.Id.btnFriendEvents);
             btnFriendEvents.Click += BtnFriendEvents_Click;
         }
 
         private void BtnFriendEvents_Click(object sender, EventArgs e)
         {
+            // Switches to activity that displays a list of the events (created by the current user's
+            // friends) that the current user has been invited to
             Intent toFriendsEvents = new Intent(this, typeof(FriendsEvents));
             toFriendsEvents.PutExtra("token", AccessToken);
             toFriendsEvents.PutExtra("userName", userName);
@@ -108,7 +136,7 @@ namespace Login
         {
             base.OnResume();
 
-            // get get an updated event list from the database
+            // get an updated event list from the database
             string urlEvents = GetString(Resource.String.IP) + "api/events";
             string urlAttending = GetString(Resource.String.IP) + "api/attendances";
 
@@ -164,11 +192,15 @@ namespace Login
             toEventProfile.PutExtra("token", AccessToken);
             toEventProfile.PutExtra("eventId", relatedEvents[relatedEvents.Keys[e.Position]]);
             toEventProfile.PutExtra("userName", userName);
+            
+            // Switches to activity that contains all the details of the clicked event. Allows the event
+            // to be deleted if it's the current user's event.
             StartActivity(toEventProfile);
         }
 
         private void BtnMyEvents_Click(object sender, EventArgs e)
         {
+            // Switches to activity that displays a list of the events that the current user has created
             Intent toMyEvents = new Intent(this, typeof(MyEvents));
             toMyEvents.PutExtra("token", AccessToken);
             toMyEvents.PutExtra("userName", userName);
@@ -177,15 +209,18 @@ namespace Login
 
         public static async Task<string> MakeGetRequest(string url)
         {
+            // Create URL header
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
 
+            // Get response from the API
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
             respStream.Flush();
 
+            // Read data
             using (StreamReader sr = new StreamReader(respStream))
             {
                 //Need to return this response 
