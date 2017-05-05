@@ -12,12 +12,26 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
-
+/***
+* FriendsEvents.cs Activity: . 
+*
+* 
+* OnCreate: Initializes and sets activity view to be displayed.
+* 
+* OnResume: Overrided function that displays the events associated with user. 
+*
+* LvFriendEvents_ItemClick: Event handler that opens up the EventProfile Activity.
+*
+* MakeGetRequest: Receives data from web api through http get request and returns the content received. 
+*  
+* 
+***/
 namespace Login
 {
     [Activity(Label = "FriendsEvents")]
     public class FriendsEvents : Activity
     {
+        // initialize variables 
         private static string AccessToken;
         private static string userName;
         private TextView tvFriendsEventsError;
@@ -47,19 +61,21 @@ namespace Login
             {
                 string response = await MakeGetRequest(urlAttendance);
 
-                
-
                 if (response != null)
                 {
+                    
                     eventData = JsonConvert.DeserializeObject(response);
 
                     friendsEvents.Clear();
+
+                    // loop through dynamic to find all events 
                     foreach (var x in eventData)
                     {
 
                        friendsEvents.Add(x.EventName.ToString() + " - " + x.EventOwner.ToString(), x.EventId.ToString());
                     }
 
+                    // display list 
                     ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1,
                         friendsEvents.Keys.ToArray());
                     lvFriendEvents.Adapter = adapter;
@@ -91,21 +107,22 @@ namespace Login
             {
                 string response = await MakeGetRequest(urlAttendance);
 
-
-
                 if (response != null)
                 {
-                    eventData = JsonConvert.DeserializeObject(response);
 
+                    eventData = JsonConvert.DeserializeObject(response);
                     friendsEvents.Clear();
+
+                    // loop through dynamic and save all events to list 
                     foreach (var x in eventData)
                     {
 
                         friendsEvents.Add(x.EventName.ToString() + " - " + x.EventOwner.ToString(), x.EventId.ToString());
                     }
 
+                    // display events in a list 
                     ArrayAdapter adapter = new ArrayAdapter(this, Android.Resource.Layout.SimpleListItem1,
-                        friendsEvents.Keys.ToArray());
+                    friendsEvents.Keys.ToArray());
                     lvFriendEvents.Adapter = adapter;
                 }
 
@@ -124,7 +141,10 @@ namespace Login
 
         private void LvFriendEvents_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+            // initialize intent for new activity 
             Intent toEventProfile = new Intent(this, typeof(EventProfile));
+
+            // pass data to new activities through extras 
             toEventProfile.PutExtra("token", AccessToken);
             toEventProfile.PutExtra("eventId", friendsEvents[friendsEvents.Keys[e.Position]]);
             toEventProfile.PutExtra("userName", userName);
@@ -133,18 +153,20 @@ namespace Login
 
         public static async Task<string> MakeGetRequest(string url)
         {
+            //initialize http request and set method to a get request 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
 
+            //initialize variables to stream data from web api
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
             respStream.Flush();
 
             using (StreamReader sr = new StreamReader(respStream))
             {
-                //Need to return this response 
+                // read in data 
                 string strContent = sr.ReadToEnd();
                 respStream = null;
                 return strContent;
