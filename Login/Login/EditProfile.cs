@@ -14,6 +14,23 @@ using Android.Widget;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
+/***
+ * Activity that allows the user to modify their profile information,
+ * such as first name and last name.
+ *
+ * OnCreate
+ * The function that is called after the Activity is created.
+ *
+ * BtnEditSaveChanges_Click
+ * Event handler used when the user clicks on the save changes button.
+ *
+ * MakeGetRequest
+ * Sends GET Request to API.
+ *
+ * MakePostRequest
+ * Sends HTTP Request to API.
+*/
+
 namespace Login.Resources.layout
 {
     [Activity(Label = "EditProfile")]
@@ -60,6 +77,7 @@ namespace Login.Resources.layout
                 tvEditError.Text = "ERROR"; 
             }
 
+            // EVENT HANDLER
             Button btnEditSaveChanges = (Button) FindViewById(Resource.Id.btnEditSaveChanges);
             btnEditSaveChanges.Click += BtnEditSaveChanges_Click;
         }
@@ -84,15 +102,18 @@ namespace Login.Resources.layout
 
         public static async Task<string> MakeGetRequest(string url)
         {
+            // Create URL header 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
 
+            // Get response from the API
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
             respStream.Flush();
 
+            // Read data
             using (StreamReader sr = new StreamReader(respStream))
             {
                 //Need to return this response 
@@ -104,16 +125,19 @@ namespace Login.Resources.layout
 
         public async Task<string> MakePostRequest(string url, string serializedDataString, bool isJson)
         {
-            //simple request function 
+            // Sets HTTP request to be a POST
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             if (isJson)
                 request.ContentType = "application/json";
             else
                 request.ContentType = "application/x-www-form-urlencoded";
 
+            // Add the token to the URL
             request.Method = "POST";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
             var stream = await request.GetRequestStreamAsync();
+            
+            // Write data
             using (var writer = new StreamWriter(stream))
             {
                 writer.Write(serializedDataString);
@@ -121,6 +145,7 @@ namespace Login.Resources.layout
                 writer.Dispose();
             }
 
+            // Get data from API reply
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
 
