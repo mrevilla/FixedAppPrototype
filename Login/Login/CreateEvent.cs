@@ -14,6 +14,42 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
+/***
+ * Activity that handles the creation of an event. User enters details of the
+ * event, such as name and location. Sends a POST request to post the details
+ * of the event in the database.
+ *
+ * OnCreate
+ * The function that is called after the activity is created.
+ *
+ * BtnCETime_Click
+ * Event handler used when the user clicks on the set time button.
+ *
+ * BtnCEDate_Click
+ * Event handler used when the user clicks on the set date button.
+ *
+ * BtnCECreateEvent_Click
+ * Event handler used when the user clicks on the create event button.
+ *
+ * BtnSelectLocation_Click
+ * Event handler used when the user clicks on the set location button.
+ *
+ * OnActivityResult
+ * Sets the event location that was given by the user.
+ *
+ * OnCreateDialog
+ * Allows the date picker and time picker dialogs to open.
+ *
+ * OnDateSet
+ * Sets the date that was given by the user.
+ *
+ * OnTimeSet
+ * Sets the time that was given by the user.
+ *
+ * MakePostRequest
+ * Sends HTTP Request to API.
+*/
+
 namespace Login
 {
     [Activity(Label = "CreateEvent")]
@@ -53,6 +89,7 @@ namespace Login
             tvCEDate = (TextView)FindViewById(Resource.Id.tvCEDate);
             tvCEAddress = (TextView)FindViewById(Resource.Id.tvCEAddress);
 
+            // EVENT HANDLER
             Button btnCEDate = (Button)FindViewById(Resource.Id.btnCEDate);
             btnCEDate.Click += BtnCEDate_Click;
 
@@ -68,16 +105,19 @@ namespace Login
 
         private void BtnCETime_Click(object sender, EventArgs e)
         {
+            // Show clock to set time
             ShowDialog(TIME_DIALOG);
         }
 
         private void BtnCEDate_Click(object sender, EventArgs e)
         {
+            // Show calendar to set date
             ShowDialog(DATE_DIALOG);
         }
 
         private async void BtnCECreateEvent_Click(object sender, EventArgs e)
         {
+            // Creates the event upon tapping the create event button
             evt.Name = etCEEventName.Text;
             evt.Details = etCEDetails.Text;
 
@@ -85,6 +125,8 @@ namespace Login
             evt.EventDateTime = formattedString;
 
             string payload = JsonConvert.SerializeObject(evt);
+            
+            // Get database url
             string url = GetString(Resource.String.IP) + "api/events";
 
             try
@@ -109,6 +151,7 @@ namespace Login
 
         private void BtnSelectLocation_Click(object sender, EventArgs e)
         {
+            // Switches to the set location activity
             Intent activityIntent = new Intent(this, typeof(SelectLocation));
             StartActivityForResult(activityIntent, 0);
         }
@@ -116,6 +159,7 @@ namespace Login
         protected override void OnActivityResult(int requestCode,
             [GeneratedEnum] Result resultCode, Intent data)
         {
+            // Sets the event location that was given by the user
             base.OnActivityResult(requestCode, resultCode, data);
             if (resultCode == Result.Ok)
             {
@@ -138,6 +182,7 @@ namespace Login
 
         protected override Dialog OnCreateDialog(int id)
         {
+            // Opens either the date picker or time picker dialog
             switch (id)
             {
                 case DATE_DIALOG:
@@ -161,6 +206,7 @@ namespace Login
 
         public void OnDateSet(DatePicker view, int year, int month, int dayOfMonth)
         {
+            // Sets the date that was given by the user
             this.year = year;
             this.month = month;
             this.day = dayOfMonth;
@@ -170,6 +216,7 @@ namespace Login
 
         public void OnTimeSet(TimePicker view, int hourOfDay, int minute)
         {
+            // Sets the time that was given by the user
             this.hours = hourOfDay;
             this.minutes = minute;
 
@@ -178,13 +225,14 @@ namespace Login
 
         public async Task<string> MakePostRequest(string url, string serializedDataString, bool isJson)
         {
-            //simple request function 
+            // Sets http request to be a post
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             if (isJson)
                 request.ContentType = "application/json";
             else
                 request.ContentType = "application/x-www-form-urlencoded";
 
+            // Add the token to the url
             request.Method = "POST";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
             var stream = await request.GetRequestStreamAsync();
@@ -195,6 +243,7 @@ namespace Login
                 writer.Dispose();
             }
 
+            // Get data from API reply
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
 
