@@ -14,12 +14,33 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
-
+/***
+* EventMap.cs Activity: This activity uses the Google Maps API to list out the created and invited events of user. 
+*
+* 
+* OnCreate: Initializes and sets activity view to display map and corresponding events. 
+*
+* BtnMVDelete_Click: Event handler which makes a delete request to delete event.
+*
+* MakeGetRequest: Receives data from web api through http get request and returns the content received. 
+*
+* SetUpMap: Sets up the map view to display in activity.
+* 
+* OnMapReady: Handles all of the pin posting and markers sent to the map along with handlers for marker options
+* 
+* MvMap_MarkerClick: Displays the event information when an even pin is clicked on and focuses camera on location
+* 
+* MakeDeleteRequest: Sets the http delete request sent to the web api
+*
+* OnMapLongClick: 
+*
+***/
 namespace Login
 {
     [Activity(Label = "EventMap")]
     public class EventMap : Activity, IOnMapReadyCallback, GoogleMap.IOnMapLongClickListener
     {
+        // initialize variables
         private TextView tvMVError;
         private static string eventId;
         private static string AccessToken;
@@ -37,12 +58,12 @@ namespace Login
         private EditText etMVLongitude;
         private EditText etMVLatitude;
         private EditText etMVEventHost;
-
         private Button btnMVDelete;
         //SortedList<string, string> eventDetails = new SortedList<string, string>();
         //SortedList<string, string> eventIds = new SortedList<string, string>();
         List<string> invited = new List<string>();
         SortedList<string, Event> mapEvents = new SortedList<string, Event>();
+        
         protected async override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -64,9 +85,11 @@ namespace Login
             etMVLatitude = (EditText)FindViewById(Resource.Id.etMVLatitude);
             etMVEventHost = (EditText)FindViewById(Resource.Id.etMVEventHost);
 
-             btnMVDelete= (Button)FindViewById(Resource.Id.btnMVDelete);
+            // wire buttons
+            btnMVDelete= (Button)FindViewById(Resource.Id.btnMVDelete);
             btnMVDelete.Click += BtnMVDelete_Click;
 
+            // get extra from previous activity 
             AccessToken = Intent.GetStringExtra("token");
             userName = Intent.GetStringExtra("userName");
 
@@ -102,9 +125,11 @@ namespace Login
                 if (allSerialized != null)
                 {
                     dynamic allEvents = JsonConvert.DeserializeObject(allSerialized);
-
+                    
+                    // loop through events 
                     foreach (var x in allEvents)
                     {
+                        // checks for all events invited or created by user and adds to events list 
                         if (invited.Contains(x.EventId.ToString()) || x.Username.ToString() == userName)
                         {
                             Event captureEvent = new Event();
@@ -138,12 +163,16 @@ namespace Login
 
         private async void BtnMVDelete_Click(object sender, EventArgs e)
         {
+            // set url access to web api
             string deleteUrl = GetString(Resource.String.IP) + "api/Events/" + eventId;
 
             try
             {
+                // make delete request to web api to delete event 
                 string response = await MakeDeleteRequest(deleteUrl, true);
                 Toast.MakeText(this, "Event Deleted", ToastLength.Short).Show();
+                
+                // resets the textviews in activity to blank 
                 etMVAddress1.Text = "";
                 etMVAddress2.Text = "";
                 etMVCity.Text = "";
@@ -157,6 +186,7 @@ namespace Login
                 etMVEventHost.Text = "";
                 btnMVDelete.Visibility = ViewStates.Gone;
 
+                // removes event from list 
                 mapEvents.Remove(eventId);
                 mvMap.Clear();
                 SetUpMap();
@@ -170,18 +200,20 @@ namespace Login
         }
 
 
-
         public static async Task<string> MakeGetRequest(string url)
         {
+            //initialize http request and set method to a get request 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
 
+            //initialize variables to stream data from web api
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
             respStream.Flush();
 
+            // read content that was returned from the get request
             using (StreamReader sr = new StreamReader(respStream))
             {
                 //Need to return this response 
@@ -193,6 +225,7 @@ namespace Login
 
         private void SetUpMap()
         {
+            // if there is no map set fragmet to display map specified in OnMapReady
             if (mvMap == null)
             {
                 FragmentManager.FindFragmentById<MapFragment>(Resource.Id.mvMap).GetMapAsync(this);
@@ -201,24 +234,23 @@ namespace Login
 
         public void OnMapReady(GoogleMap googleMap)
         {
+            // initialize map and set camera to lattitude location 
             mvMap = googleMap;
-
-
-
             LatLng latlng = new LatLng(39.519962, -119.797516);
             CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(latlng, 11);
             mvMap.MoveCamera(camera);
 
             //place a pin where the event is located
             //loop through each of the events and place a pin.
-
             foreach (KeyValuePair<string, Event> x in mapEvents)
             {
                 LatLng newPin = new LatLng(x.Value.Latitude, x.Value.Longitude);
                 MarkerOptions options = new MarkerOptions().SetPosition(newPin).
-                    SetTitle(x.Value.Name + " - " + x.Value.Username).SetSnippet(x.Value.Details);
+                
+                // set the title and information of event 
+                SetTitle(x.Value.Name + " - " + x.Value.Username).SetSnippet(x.Value.Details);
 
-
+                // changes color of pin to indicate if event is created by user 
                 if (x.Value.Username == userName)
                 {
                     options.SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueCyan));
@@ -229,22 +261,20 @@ namespace Login
 
             }
 
-
-
             mvMap.MarkerClick += MvMap_MarkerClick;
-
-
-
+            
             //mvMap.AddMarker(options);
             //epMap.SetOnMapLongClickListener(this);
         }
 
         private void MvMap_MarkerClick(object sender, GoogleMap.MarkerClickEventArgs e)
         {
+            // shows information of marker and sets camera position
             e.Marker.ShowInfoWindow();
             CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(e.Marker.Position, 11);
             mvMap.MoveCamera(camera);
 
+            // set textview of activity to reflect information of event selected
             Event selectedEvent = mapEvents[e.Marker.Tag.ToString()];
             etMVAddress1.Text = selectedEvent.Address1;
             etMVAddress2.Text = selectedEvent.Address2;
@@ -258,6 +288,7 @@ namespace Login
             etMVLatitude.Text = selectedEvent.Latitude.ToString();
             etMVEventHost.Text = selectedEvent.Username;
 
+            // allows event to be deleted if user is owner of event
             if (userName == selectedEvent.Username)
             {
                 btnMVDelete.Visibility = ViewStates.Visible;
@@ -273,13 +304,14 @@ namespace Login
 
         public async Task<string> MakeDeleteRequest(string url, bool isJson)
         {
-            //simple request function 
+            // initialize http request and set url to passed string 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             if (isJson)
                 request.ContentType = "application/json";
             else
                 request.ContentType = "application/x-www-form-urlencoded";
 
+            // set http method to delete 
             request.Method = "DELETE";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
             var stream = await request.GetRequestStreamAsync();
@@ -290,9 +322,11 @@ namespace Login
                 writer.Dispose();
             }
 
+            // initialize stream reader to previous request 
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
 
+            // read data from stream
             using (StreamReader sr = new StreamReader(respStream))
             {
                 return sr.ReadToEnd();
