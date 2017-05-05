@@ -13,6 +13,23 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
+/***
+ * The activity lists friends that are invited to a specific event. 
+ * They can be chosen to be uninvited.
+ * 
+ * OnCreate The function that is called after the Activity is created.
+ * 
+ * BtnRevoke_Click
+ * Event handler used for uninviting a user from an event.
+ * 
+ * MakeGetRequest
+ * Sends GET request to API
+ * 
+ * MakePostRequest
+ * Sends POST request to API
+ * 
+ */
+
 namespace Login
 {
     [Activity(Label = "UninvitePage")]
@@ -132,6 +149,7 @@ namespace Login
 
         public static async Task<string> MakeGetRequest(string url)
         {
+            //set http request to be a get
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
@@ -152,7 +170,7 @@ namespace Login
 
         public async Task<string> MakePostRequest(string url, string serializedDataString, bool isJson)
         {
-            //simple request function 
+            //set http request to be a POST
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             if (isJson)
                 request.ContentType = "application/json";
@@ -171,7 +189,7 @@ namespace Login
 
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
-
+        
             using (StreamReader sr = new StreamReader(respStream))
             {
                 return sr.ReadToEnd();
