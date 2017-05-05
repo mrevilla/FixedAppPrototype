@@ -13,6 +13,21 @@ using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
 
+/***
+ * This activity shows a list of the events a user has created.
+ * 
+ * OnCreate The function that is called after the Activity is created.
+ * 
+ * BtnEvents_Click  Event handler used when the user wants to go the events list page.
+ *
+ * LvMyEvents_ItemClick
+ * Function that will start another activity when an event part of the list view has been clicked.
+ *
+ * OnResume
+ * Function called after Aactivity is visible again
+ *
+ */
+
 namespace Login
 {
     [Activity(Label = "MyEvents")]
@@ -119,6 +134,7 @@ namespace Login
 
     private void LvMyEvents_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+            //start EventProfile activity with token, eventID, userName extras
             Intent toEventProfile = new Intent(this, typeof(EventProfile));
             toEventProfile.PutExtra("token", AccessToken);
             toEventProfile.PutExtra("eventId", myEvents[myEvents.Keys[e.Position]]);
@@ -128,6 +144,7 @@ namespace Login
 
         public static async Task<string> MakeGetRequest(string url)
         {
+            //Set http request to be a get.
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
@@ -136,7 +153,8 @@ namespace Login
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
             respStream.Flush();
-
+    
+            //read data
             using (StreamReader sr = new StreamReader(respStream))
             {
                 //Need to return this response 
