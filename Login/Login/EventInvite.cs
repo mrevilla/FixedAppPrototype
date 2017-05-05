@@ -15,6 +15,21 @@ using Android.Widget;
 using Javax.Crypto.Interfaces;
 using Newtonsoft.Json;
 
+/***
+ * Populates a list of the user’s events and allows the user to invite
+ * other users to an event.
+ *
+ * OnCreate
+ * The function that is called after the activity is created.
+ *
+ * ListInviteEvents_ItemClick
+ * Event handler used when the user selects an event and wants to invite
+ * other users to the event.
+ *
+ * MakeGetRequest
+ * Sends GET Request to API
+*/
+
 namespace Login
 {
     [Activity(Label = "EventInvite")]
@@ -101,15 +116,18 @@ namespace Login
 
         public static async Task<string> MakeGetRequest(string url)
         {
+            // Create URL header
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
             request.Headers.Add("Authorization", "Bearer " + AccessToken);
 
+            // Get response from the API
             var response = await request.GetResponseAsync();
             var respStream = response.GetResponseStream();
             respStream.Flush();
 
+            // Read data
             using (StreamReader sr = new StreamReader(respStream))
             {
                 //Need to return this response 
