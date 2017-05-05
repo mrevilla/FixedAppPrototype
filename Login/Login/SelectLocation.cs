@@ -18,6 +18,33 @@ using Android.Widget;
 using Newtonsoft.Json;
 using Thread = Java.Lang.Thread;
 
+/***
+  *  Activity for selecting a location of where a user is hosting an event. The location
+  * can be chosen at a specific location using Google Maps or manually typed in.
+  *
+  * OnCreate 
+  * The function that is called after the Activity is created. 
+  *
+  * BtnSaveLocation_Click
+  * Event handler used when the user attempts to save the location
+  * 
+  * OnMapLongClick
+  * Event handler used for placing a pin on the map
+  *
+  * BtnAddress_Click
+  * Event handler used for confirming an address of an event.
+  *
+  * SetUpMap
+  * Function to set map fragment
+  *
+  * OnMapReady
+  * Function used to center map at Reno at the start of the activity
+  *
+  * MakeGetRequest    
+  * Sends GET Request to API
+  * 
+  */
+
 namespace Login
 {
     [Activity(Label = "SelectLocation")]
@@ -75,6 +102,7 @@ namespace Login
 
         private async void BtnAddress_Click(object sender, EventArgs e)
         {
+            //set url to location
             string url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + etAddress1.Text + ' ' +
                 etAddress2.Text + etCity.Text + etState.Text;
             try
@@ -92,7 +120,7 @@ namespace Login
                 System.Double.TryParse(jsondata.results[0].geometry.location.lat.ToString(), out lat);
                 System.Double.TryParse(jsondata.results[0].geometry.location.lng.ToString(), out lng);
                 
-                
+                //set camera to location and add event
                 LatLng latlng = new LatLng(lat, lng);
                 CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(latlng, 17);
                 slMap.MoveCamera(camera);
@@ -103,15 +131,15 @@ namespace Login
         }
 
         private void SetUpMap()
-        {
+        {   
             if (slMap == null)
-            {
+            {   //set up map fragment
                 FragmentManager.FindFragmentById<MapFragment>(Resource.Id.slMap).GetMapAsync(this);
             }
         }
 
         public void OnMapReady(GoogleMap googleMap)
-        {
+        {   //center map at Reno
             slMap = googleMap;
             LatLng latlng = new LatLng(39.519962, -119.797516);
             CameraUpdate camera = CameraUpdateFactory.NewLatLngZoom(latlng, 11);
@@ -121,6 +149,7 @@ namespace Login
 
         public static async Task<string> MakeGetRequest(string url)
         {
+            //sets http request to be a get.
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.ContentType = "application/json; charset=utf-8";
             request.Method = "GET";
@@ -129,9 +158,9 @@ namespace Login
             var respStream = response.GetResponseStream();
             respStream.Flush();
 
+            //read data
             using (StreamReader sr = new StreamReader(respStream))
-            {
-                //Need to return this response 
+            {        
                 string strContent = sr.ReadToEnd();
                 respStream = null;
                 return strContent;
@@ -147,6 +176,7 @@ namespace Login
             MarkerOptions options = new MarkerOptions().SetPosition(point);
             slMap.AddMarker(options);
 
+            //set up url for geolocation.
             string url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + point.Latitude + ',' + point.Longitude;
             try
             {
@@ -161,8 +191,10 @@ namespace Login
             {
                 jsondata = JsonConvert.DeserializeObject(response);
 
+                //parses data
                 string formattedAddress = jsondata.results[0].formatted_address;
 
+                //displays data
                 List<string> address = formattedAddress.Split(',').ToList<string>();
                 etAddress1.Text = address[0];
                 etCity.Text = address[1];
